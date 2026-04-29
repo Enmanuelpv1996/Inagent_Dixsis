@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cream:#F4EFE8;--cream2:#EDE7DE;--brown:#3B2A1E;--brown2:#5C4033;--rust:#7A4A2E;--muted:#8C7B6E;--border:rgba(59,42,30,0.10);--border2:rgba(59,42,30,0.18)}
+body{background:var(--cream);color:var(--brown);font-family:"DM Sans",sans-serif;min-height:100vh;display:flex;flex-direction:column}
+nav{position:sticky;top:0;z-index:100;background:rgba(244,239,232,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.back{display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:13px}
+.back:hover{color:var(--brown)}
+.back svg{width:16px;height:16px}
+.nav-tag{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 28px;text-align:center}
+.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 24px}
+h1{font-family:"Playfair Display",serif;font-size:44px;font-weight:700;color:var(--brown);margin-bottom:8px}
+.role{font-size:14px;color:var(--muted);margin-bottom:28px}
+.desc{max-width:460px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:36px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:36px}
+.tag{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid var(--border2);color:var(--muted);background:rgba(255,255,255,0.5)}
+.hint{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--border);padding:14px 20px;border-radius:11px;max-width:380px;display:flex;align-items:center;gap:10px}
+.hint-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;animation:pulse 1.8s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+footer a{color:var(--rust);text-decoration:none}
+</style>
+<title>Andrea — Citas Médicas · Dixsis Demos</title>
+</head>
+<body>
+<nav>
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+    Volver a demos
+  </a>
+  <span class="nav-tag">Salud · Multi-agente</span>
+</nav>
+<main>
+  <div class="avatar" style="background:#F0FAF4;color:#2E8A57;border:1px solid rgba(46,138,87,0.15)">A</div>
+  <h1>Andrea</h1>
+  <p class="role">Recepcionista Virtual · MediPlus Clínica</p>
+  <p class="desc">Agenda, cancela y reagenda citas médicas con múltiples doctores. Dile tu nombre o teléfono para identificarte como paciente existente, o inicia como paciente nuevo.</p>
+  <div class="tags">
+    <span class="tag">Salud</span>
+    <span class="tag">Multi-agente</span>
+    <span class="tag">Google Calendar</span>
+    <span class="tag">Make · Automatización</span>
+  </div>
+  <div class="hint">
+    <div class="hint-dot" style="background:#2E8A57"></div>
+    Andrea está activa — abre el chat con el botón en la esquina inferior derecha
+  </div>
+</main>
+<footer>Demo por <a href="index.html">Dixsis</a> · powered by inConcert inAgent · <span style="opacity:0.5">Datos ficticios</span></footer>
+<script>
+(function(){var s=document.createElement("script");s.src="https://s3.us-east-1.amazonaws.com/webchat.us1.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/362929cb-f754-4a0c-9ea8-4cfd05f2ed9d/362929cb-f754-4a0c-9ea8-4cfd05f2ed9d.bundle.js";s.async=true;s.charset="UTF-8";s.onload=function(){window.Webchat.init()};document.head.appendChild(s)})();
+</script>
+</body></html>
