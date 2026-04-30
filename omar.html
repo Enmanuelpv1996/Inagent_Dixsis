@@ -3,398 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demos IA — Dixsis by inConcert</title>
+<title>Omar — Asesor Telecom · Dixsis Demos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --cream:   #F4EFE8;
-    --cream2:  #EDE7DE;
-    --cream3:  #E4DDD3;
-    --brown:   #3B2A1E;
-    --brown2:  #5C4033;
-    --rust:    #7A4A2E;
-    --rust2:   #9B5E3A;
-    --muted:   #8C7B6E;
-    --border:  rgba(59,42,30,0.10);
-    --border2: rgba(59,42,30,0.18);
-    --radius:  14px;
-    --radius-sm: 9px;
-  }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--cream);
-    color: var(--brown);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.65;
-    min-height: 100vh;
-  }
-
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(244,239,232,0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    max-width: 1100px; margin: 0 auto; padding: 18px 28px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .logo { text-decoration: none; display: flex; align-items: baseline; gap: 10px; }
-  .logo-name {
-    font-family: 'DM Sans', sans-serif; font-weight: 700;
-    font-size: 20px; letter-spacing: -0.02em; color: var(--brown);
-  }
-  .logo-name span { color: var(--rust); }
-  .logo-sep { color: var(--muted); font-size: 14px; }
-  .logo-sub { font-size: 13px; color: var(--muted); font-weight: 400; }
-  .nav-cta {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--brown); color: var(--cream); border: none;
-    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
-    padding: 9px 18px; border-radius: 50px; cursor: pointer; text-decoration: none;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--brown2); }
-
-  /* HERO */
-  .hero { padding: 80px 28px 64px; max-width: 1100px; margin: 0 auto; }
-  .hero-eyebrow {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--rust); margin-bottom: 20px; display: block;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(38px, 5vw, 60px);
-    font-weight: 700; line-height: 1.08;
-    color: var(--brown); margin-bottom: 20px; max-width: 700px;
-  }
-  .hero h1 em { font-style: italic; color: var(--rust); }
-  .hero-sub {
-    font-size: 16px; color: var(--muted); max-width: 520px;
-    line-height: 1.7; margin-bottom: 36px;
-  }
-  .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-  .pill {
-    font-size: 12px; padding: 6px 14px; border-radius: 50px;
-    border: 1px solid var(--border2); color: var(--muted);
-    background: rgba(255,255,255,0.5);
-  }
-
-  /* SECTION */
-  .section { max-width: 1100px; margin: 0 auto; padding: 0 28px 72px; }
-  .section-head { margin-bottom: 32px; }
-  .section-label {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 6px;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px; font-weight: 600; color: var(--brown);
-  }
-
-  /* DIVIDER */
-  .divider { border: none; border-top: 1px solid var(--border); margin: 8px 28px 56px; max-width: 1100px; margin-left: auto; margin-right: auto; }
-
-  /* GRID */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 18px; }
-
-  /* CARD */
-  .card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
-    display: flex; flex-direction: column;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-  }
-  .card:hover {
-    border-color: var(--border2);
-    box-shadow: 0 4px 24px rgba(59,42,30,0.07);
-    transform: translateY(-2px);
-  }
-  .card-top {
-    display: flex; align-items: flex-start; justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  .avatar {
-    width: 52px; height: 52px; border-radius: 13px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
-    flex-shrink: 0;
-  }
-  .avatar.a { background: #EFF4FF; color: #3B6FD4; border: 1px solid rgba(59,111,212,0.15); }
-  .avatar.b { background: #F0FAF4; color: #2E8A57; border: 1px solid rgba(46,138,87,0.15); }
-  .avatar.c { background: #FDF3EC; color: var(--rust); border: 1px solid rgba(122,74,46,0.15); }
-
-  .live-badge {
-    display: flex; align-items: center; gap: 5px;
-    font-size: 11px; font-weight: 500; color: #2E8A57;
-    background: #EEF8F2; border: 1px solid rgba(46,138,87,0.2);
-    padding: 4px 10px; border-radius: 20px;
-  }
-  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #2E8A57; animation: pulse 1.8s ease infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
-
-  .card-name {
-    font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
-    color: var(--brown); margin-bottom: 3px;
-  }
-  .card-role { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
-  .card-desc { font-size: 13.5px; color: #6B5A50; line-height: 1.65; margin-bottom: 18px; flex: 1; }
-
-  .star-box {
-    display: flex; gap: 10px; align-items: flex-start;
-    background: var(--cream); border: 1px solid var(--border);
-    border-radius: var(--radius-sm); padding: 11px 13px; margin-bottom: 18px;
-  }
-  .star-ico { font-size: 13px; flex-shrink: 0; }
-  .star-lbl { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2px; }
-  .star-val { font-size: 12.5px; font-weight: 500; color: var(--brown2); }
-
-  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 22px; }
-  .tag {
-    font-size: 11px; padding: 4px 9px; border-radius: 6px;
-    border: 1px solid var(--border); color: var(--muted);
-    background: var(--cream);
-  }
-
-  .btn {
-    display: flex; align-items: center; justify-content: center; gap: 7px;
-    width: 100%; padding: 12px 18px; border-radius: var(--radius-sm);
-    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
-    cursor: pointer; text-decoration: none; border: none;
-    transition: opacity 0.15s, transform 0.15s;
-  }
-  .btn:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn.primary { background: var(--brown); color: var(--cream); }
-
-  /* UPCOMING */
-  .card.upcoming { background: var(--cream2); opacity: 0.65; }
-  .card.upcoming:hover { transform: none; box-shadow: none; }
-  .skel { height: 10px; border-radius: 4px; background: var(--cream3); margin-bottom: 7px; }
-  .btn.ghost {
-    background: transparent; border: 1px solid var(--border2);
-    color: var(--muted); cursor: default;
-  }
-  .btn.ghost:hover { transform: none; opacity: 1; }
-
-  /* HOW */
-  .how-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
-  .how-card {
-    background: #fff; border: 1px solid var(--border);
-    border-radius: var(--radius-sm); padding: 20px;
-  }
-  .how-num {
-    font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700;
-    color: var(--rust); opacity: 0.35; line-height: 1; margin-bottom: 10px;
-  }
-  .how-title { font-size: 14px; font-weight: 500; color: var(--brown); margin-bottom: 5px; }
-  .how-desc { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border); padding: 28px;
-    text-align: center; color: var(--muted); font-size: 12.5px;
-  }
-  footer a { color: var(--rust); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-
-  @media (max-width: 600px) {
-    .hero { padding: 52px 20px 44px; }
-    .section { padding: 0 20px 52px; }
-    .grid { grid-template-columns: 1fr; }
-    .how-grid { grid-template-columns: 1fr 1fr; }
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cream:#F4EFE8;--cream2:#EDE7DE;--brown:#3B2A1E;--brown2:#5C4033;--rust:#7A4A2E;--muted:#8C7B6E;--border:rgba(59,42,30,0.10);--border2:rgba(59,42,30,0.18);--purple:#6B4FBB;--purple-dim:rgba(107,79,187,0.10)}
+body{background:var(--cream);color:var(--brown);font-family:"DM Sans",sans-serif;min-height:100vh;display:flex;flex-direction:column}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 30% 20%,rgba(107,79,187,0.07) 0%,transparent 60%);pointer-events:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(244,239,232,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.back{display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:13px}
+.back:hover{color:var(--brown)}
+.back svg{width:16px;height:16px}
+.nav-tag{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 28px;position:relative;z-index:1;text-align:center}
+.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 24px;background:var(--purple-dim);color:var(--purple);border:1px solid rgba(107,79,187,0.2)}
+h1{font-family:"Playfair Display",serif;font-size:44px;font-weight:700;color:var(--brown);margin-bottom:8px}
+.role{font-size:14px;color:var(--muted);margin-bottom:28px}
+.desc{max-width:480px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:36px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:40px}
+.tag{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid var(--border2);color:var(--muted);background:rgba(255,255,255,0.5)}
+ 
+/* CANAL BUTTONS */
+.channels{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+.ch-btn{display:flex;align-items:center;gap:10px;padding:14px 24px;border-radius:12px;font-family:"DM Sans",sans-serif;font-size:14px;font-weight:500;cursor:pointer;border:none;transition:opacity 0.15s,transform 0.15s;text-decoration:none}
+.ch-btn:hover{opacity:0.88;transform:translateY(-1px)}
+.ch-btn.chat{background:var(--brown);color:var(--cream)}
+.ch-btn.call{background:var(--purple);color:#fff}
+.ch-icon{font-size:18px}
+.ch-label{}
+.ch-sub{font-size:11px;opacity:0.7;display:block;margin-top:1px}
+ 
+.hint{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--border);padding:14px 20px;border-radius:11px;max-width:420px;line-height:1.6;margin-top:8px}
+ 
+footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;position:relative;z-index:1}
+footer a{color:var(--rust);text-decoration:none}
+ 
+ 
 </style>
 </head>
 <body>
-
+ 
 <nav>
-  <div class="nav-inner">
-    <a class="logo" href="#">
-      <span class="logo-name">DIX<span>SIS</span></span>
-      <span class="logo-sep">·</span>
-      <span class="logo-sub">Demos IA</span>
-    </a>
-    <a class="nav-cta" href="https://dixsis.com" target="_blank">Sitio principal</a>
-  </div>
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+    Volver a demos
+  </a>
+  <span class="nav-tag">Telecom · Chat + Voz</span>
 </nav>
-
-<div class="hero">
-  <span class="hero-eyebrow">Agentes de IA conversacional · inAgent</span>
-  <h1>Así se ve la IA<br>trabajando <em>en vivo</em></h1>
-  <p class="hero-sub">
-    Conversa directamente con agentes construidos sobre inConcert inAgent.
-    Cada uno demuestra una capacidad diferente de la plataforma.
+ 
+<main>
+  <div class="avatar">O</div>
+  <h1>Omar</h1>
+  <p class="role">Asesor Virtual · inConcert Móvil</p>
+  <p class="desc">
+    Conoce los planes de fibra óptica para hogar y móviles 4.5G/5G, califica tu perfil
+    y agenda una cita con un asesor humano. Puedes hablar con Omar por chat o por voz.
   </p>
-  <div class="hero-pills">
-    <span class="pill">Conversaciones reales, sin guión</span>
-    <span class="pill">Powered by GPT-4o mini</span>
-    <span class="pill">Datos ficticios para demo</span>
+  <div class="tags">
+    <span class="tag">Telecomunicaciones</span>
+    <span class="tag">Calificación de leads</span>
+    <span class="tag">Webchat + WebCall</span>
+    <span class="tag">Agendamiento</span>
   </div>
-</div>
-
-<div class="section">
-  <div class="section-head">
-    <div class="section-label">Disponibles ahora</div>
-    <div class="section-title">Agentes activos</div>
+ 
+  <div class="channels">
+    <button class="ch-btn chat" id="btn-chat">
+      <span class="ch-icon">💬</span>
+      <span class="ch-label">Chat con Omar<span class="ch-sub">Texto · Webchat</span></span>
+    </button>
+    <button class="ch-btn call" id="btn-call">
+      <span class="ch-icon">📞</span>
+      <span class="ch-label">Llamar a Omar<span class="ch-sub">Voz · WebCall</span></span>
+    </button>
   </div>
-  <div class="grid">
-
-    <!-- MARCO -->
-    <div class="card">
-      <div class="card-top">
-        <div class="avatar a">M</div>
-        <span class="live-badge"><span class="live-dot"></span>En vivo</span>
-      </div>
-      <div class="card-name">Marco</div>
-      <div class="card-role">Asistente de Atención al Cliente · LumenMX</div>
-      <div class="card-desc">Resuelve dudas sobre tu cuenta de servicios, reporta fallas y consulta reportes. Sabe cuándo escalar y lo hace con contexto completo.</div>
-      <div class="star-box">
-        <div class="star-ico">⭐</div>
-        <div>
-          <div class="star-lbl">Capacidad estrella</div>
-          <div class="star-val">RAG con bases de conocimiento + escalamiento inteligente</div>
-        </div>
-      </div>
-      <div class="tags">
-        <span class="tag">Utilities</span>
-        <span class="tag">RAG · PDF + FAQ</span>
-        <span class="tag">Mock APIs</span>
-      </div>
-      <a class="btn primary" href="marco.html" target="_blank">💬 Chatear con Marco</a>
-    </div>
-
-    <!-- ANDREA -->
-    <div class="card">
-      <div class="card-top">
-        <div class="avatar b">A</div>
-        <span class="live-badge"><span class="live-dot"></span>En vivo</span>
-      </div>
-      <div class="card-name">Andrea</div>
-      <div class="card-role">Recepcionista Virtual · MediPlus Clínica</div>
-      <div class="card-desc">Agenda, cancela y reagenda citas médicas con múltiples doctores. Identifica pacientes existentes y confirma automáticamente en Google Calendar.</div>
-      <div class="star-box">
-        <div class="star-ico">⭐</div>
-        <div>
-          <div class="star-lbl">Capacidad estrella</div>
-          <div class="star-val">Multi-agente orquestado + integración Google Calendar</div>
-        </div>
-      </div>
-      <div class="tags">
-        <span class="tag">Salud</span>
-        <span class="tag">Multi-agente</span>
-        <span class="tag">Google Calendar</span>
-        <span class="tag">Make</span>
-      </div>
-      <a class="btn primary" href="andrea.html" target="_blank">💬 Chatear con Andrea</a>
-    </div>
-
-    <!-- SOFÍA -->
-    <div class="card">
-      <div class="card-top">
-        <div class="avatar c">S</div>
-        <span class="live-badge"><span class="live-dot"></span>En vivo</span>
-      </div>
-      <div class="card-name">Sofía</div>
-      <div class="card-role">Asesora Inmobiliaria · Demo Inmobiliaria</div>
-      <div class="card-desc">Califica leads, presenta desarrollos disponibles y agenda visitas. Demuestra el handoff fluido entre agentes especializados en una sola conversación.</div>
-      <div class="star-box">
-        <div class="star-ico">⭐</div>
-        <div>
-          <div class="star-lbl">Capacidad estrella</div>
-          <div class="star-val">Orquestación multi-agente con cambio de avatar</div>
-        </div>
-      </div>
-      <div class="tags">
-        <span class="tag">Inmobiliaria</span>
-        <span class="tag">Orquestación</span>
-        <span class="tag">CRM mock</span>
-      </div>
-      <a class="btn primary" href="sofia.html" target="_blank">💬 Chatear con Sofía</a>
-    </div>
-
-    <!-- OMAR -->
-    <div class="card">
-      <div class="card-top">
-        <div class="avatar" style="background:rgba(107,79,187,0.10);color:#6B4FBB;border:1px solid rgba(107,79,187,0.2);">O</div>
-        <span class="live-badge"><span class="live-dot"></span>En vivo</span>
-      </div>
-      <div class="card-name">Omar</div>
-      <div class="card-role">Asesor Virtual · inConcert Móvil</div>
-      <div class="card-desc">Conoce los planes de fibra óptica y móviles 5G, califica tu perfil y agenda una cita. Disponible por chat de texto o por llamada de voz desde el navegador.</div>
-      <div class="star-box">
-        <div class="star-ico">⭐</div>
-        <div>
-          <div class="star-lbl">Capacidad estrella</div>
-          <div class="star-val">Webchat + WebCall — texto y voz en el mismo agente</div>
-        </div>
-      </div>
-      <div class="tags">
-        <span class="tag">Telecomunicaciones</span>
-        <span class="tag">Chat + Voz</span>
-        <span class="tag">Lead qualification</span>
-      </div>
-      <a class="btn primary" href="omar.html" target="_blank">💬📞 Chatear o Llamar a Omar</a>
-    </div>
-
+ 
+  <div class="hint">
+    El botón <strong>Chat</strong> abre la burbuja de texto en la esquina inferior derecha.<br>
+    El botón <strong>Llamar</strong> activa la llamada de voz — busca el botón flotante de teléfono en pantalla.
   </div>
-</div>
-
-<hr class="divider">
-
-<div class="section">
-  <div class="section-head">
-    <div class="section-label">Próximamente</div>
-    <div class="section-title">Más agentes en construcción</div>
-  </div>
-  <div class="grid">
-    <div class="card upcoming">
-      <div class="card-top">
-        <div class="avatar a" style="background:var(--cream3);color:var(--muted);border-color:var(--border);">?</div>
-        <span style="font-size:11px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:20px;">Próximamente</span>
-      </div>
-      <div class="card-name" style="color:var(--muted);">Agente #5</div>
-      <div class="card-role">Vertical por definir</div>
-      <div style="margin:14px 0 18px;"><div class="skel" style="width:80%"></div><div class="skel" style="width:60%"></div><div class="skel" style="width:72%"></div></div>
-      <a class="btn ghost">Disponible pronto</a>
-    </div>
-    <div class="card upcoming">
-      <div class="card-top">
-        <div class="avatar b" style="background:var(--cream3);color:var(--muted);border-color:var(--border);">?</div>
-        <span style="font-size:11px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:20px;">Próximamente</span>
-      </div>
-      <div class="card-name" style="color:var(--muted);">Agente #6</div>
-      <div class="card-role">Vertical por definir</div>
-      <div style="margin:14px 0 18px;"><div class="skel" style="width:75%"></div><div class="skel" style="width:55%"></div><div class="skel" style="width:68%"></div></div>
-      <a class="btn ghost">Disponible pronto</a>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<div class="section">
-  <div class="section-head">
-    <div class="section-label">La plataforma</div>
-    <div class="section-title">¿Cómo está construido esto?</div>
-  </div>
-  <div class="how-grid">
-    <div class="how-card"><div class="how-num">01</div><div class="how-title">inAgent</div><div class="how-desc">Motor de agentes IA de inConcert. Configura comportamiento, herramientas y conocimiento sin código.</div></div>
-    <div class="how-card"><div class="how-num">02</div><div class="how-title">GPT-4o mini</div><div class="how-desc">Modelo de lenguaje por defecto. Rápido, económico y potente para todos los casos de uso B2B.</div></div>
-    <div class="how-card"><div class="how-num">03</div><div class="how-title">RAG + Tools</div><div class="how-desc">Los agentes consultan bases de conocimiento en tiempo real y ejecutan acciones vía APIs y JavaScript.</div></div>
-    <div class="how-card"><div class="how-num">04</div><div class="how-title">Omnicanal</div><div class="how-desc">El mismo agente corre en Webchat, WhatsApp, Voz y más — sin duplicar configuración.</div></div>
-  </div>
-</div>
-
+</main>
+ 
 <footer>
-  <p>Demos construidas por <a href="https://dixsis.com" target="_blank">Dixsis</a> · powered by <a href="https://inconcertcc.com" target="_blank">inConcert inAgent</a></p>
-  <p style="margin-top:5px;opacity:0.6;font-size:11px;">Estas conversaciones son demos B2B y pueden contener datos ficticios.</p>
+  Demo por <a href="index.html">Dixsis</a> · powered by inConcert inAgent · <span style="opacity:0.5">Datos ficticios</span>
 </footer>
-
+ 
+<!-- WEBCHAT -->
+<script>
+(function(){
+  var s=document.createElement("script");
+  s.src="https://s3.us-east-1.amazonaws.com/webchat.us1.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/23eb84a2-c2dd-4dd4-99bf-0d9540ddafb8/23eb84a2-c2dd-4dd4-99bf-0d9540ddafb8.bundle.js";
+  s.async=true;s.charset="UTF-8";
+  s.onload=function(){window.Webchat.init()};
+  document.head.appendChild(s);
+})();
+</script>
+ 
+<!-- WEBCALL -->
+<script>
+(function(){
+  var s=document.createElement("script");
+  s.src="https://s3.us-east-1.amazonaws.com/livekit.us1.webcall.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/99cad9e5-d58f-4e39-aeea-d339fe73dd14/99cad9e5-d58f-4e39-aeea-d339fe73dd14.bundle.js";
+  s.charset="UTF-8";
+  s.onload=function(){window.Webcall.init()};
+  document.head.appendChild(s);
+})();
+</script>
+ 
 </body>
 </html>
+ 
