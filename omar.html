@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omar — Asesor Telecom · Dixsis Demos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cream:#F4EFE8;--cream2:#EDE7DE;--brown:#3B2A1E;--brown2:#5C4033;--rust:#7A4A2E;--muted:#8C7B6E;--border:rgba(59,42,30,0.10);--border2:rgba(59,42,30,0.18);--purple:#6B4FBB;--purple-dim:rgba(107,79,187,0.10)}
+body{background:var(--cream);color:var(--brown);font-family:"DM Sans",sans-serif;min-height:100vh;display:flex;flex-direction:column}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 30% 20%,rgba(107,79,187,0.07) 0%,transparent 60%);pointer-events:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(244,239,232,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.back{display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:13px}
+.back:hover{color:var(--brown)}
+.back svg{width:16px;height:16px}
+.nav-tag{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 28px;position:relative;z-index:1;text-align:center}
+.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 24px;background:var(--purple-dim);color:var(--purple);border:1px solid rgba(107,79,187,0.2)}
+h1{font-family:"Playfair Display",serif;font-size:44px;font-weight:700;color:var(--brown);margin-bottom:8px}
+.role{font-size:14px;color:var(--muted);margin-bottom:28px}
+.desc{max-width:480px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:36px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:40px}
+.tag{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid var(--border2);color:var(--muted);background:rgba(255,255,255,0.5)}
+
+/* CANAL BUTTONS */
+.channels{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+.ch-btn{display:flex;align-items:center;gap:10px;padding:14px 24px;border-radius:12px;font-family:"DM Sans",sans-serif;font-size:14px;font-weight:500;cursor:pointer;border:none;transition:opacity 0.15s,transform 0.15s;text-decoration:none}
+.ch-btn:hover{opacity:0.88;transform:translateY(-1px)}
+.ch-btn.chat{background:var(--brown);color:var(--cream)}
+.ch-btn.call{background:var(--purple);color:#fff}
+.ch-icon{font-size:18px}
+.ch-label{}
+.ch-sub{font-size:11px;opacity:0.7;display:block;margin-top:1px}
+
+.hint{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--border);padding:14px 20px;border-radius:11px;max-width:420px;line-height:1.6;margin-top:8px}
+
+footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;position:relative;z-index:1}
+footer a{color:var(--rust);text-decoration:none}
+
+/* MODAL WEBCALL */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(59,42,30,0.5);align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--cream);border:1px solid var(--border2);border-radius:18px;width:380px;max-width:95vw;padding:32px;position:relative;text-align:center}
+.modal-close{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:8px;background:rgba(59,42,30,0.08);border:none;color:var(--muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:var(--brown);margin-bottom:8px}
+.modal-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.6}
+#webcall-container{min-height:80px;display:flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+    Volver a demos
+  </a>
+  <span class="nav-tag">Telecom · Chat + Voz</span>
+</nav>
+
+<main>
+  <div class="avatar">O</div>
+  <h1>Omar</h1>
+  <p class="role">Asesor Virtual · inConcert Móvil</p>
+  <p class="desc">
+    Conoce los planes de fibra óptica para hogar y móviles 4.5G/5G, califica tu perfil
+    y agenda una cita con un asesor humano. Puedes hablar con Omar por chat o por voz.
+  </p>
+  <div class="tags">
+    <span class="tag">Telecomunicaciones</span>
+    <span class="tag">Calificación de leads</span>
+    <span class="tag">Webchat + WebCall</span>
+    <span class="tag">Agendamiento</span>
+  </div>
+
+  <div class="channels">
+    <button class="ch-btn chat" id="btn-chat">
+      <span class="ch-icon">💬</span>
+      <span class="ch-label">Chat con Omar<span class="ch-sub">Texto · Webchat</span></span>
+    </button>
+    <button class="ch-btn call" onclick="openCall()">
+      <span class="ch-icon">📞</span>
+      <span class="ch-label">Llamar a Omar<span class="ch-sub">Voz · WebCall</span></span>
+    </button>
+  </div>
+
+  <div class="hint">
+    El botón <strong>Chat</strong> abre la burbuja de texto en la esquina inferior derecha.<br>
+    El botón <strong>Llamar</strong> inicia una llamada de voz desde tu navegador — sin app, sin teléfono.
+  </div>
+</main>
+
+<footer>
+  Demo por <a href="index.html">Dixsis</a> · powered by inConcert inAgent · <span style="opacity:0.5">Datos ficticios</span>
+</footer>
+
+<!-- MODAL WEBCALL -->
+<div class="modal-overlay" id="modal-call" onclick="closeCallOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeCall()">✕</button>
+    <div class="modal-title">Llamar a Omar</div>
+    <div class="modal-sub">Se iniciará una llamada de voz desde tu navegador.<br>Asegúrate de permitir el acceso al micrófono.</div>
+    <div id="webcall-container"></div>
+  </div>
+</div>
+
+<!-- WEBCHAT -->
+<script>
+(function(){
+  var s=document.createElement("script");
+  s.src="https://s3.us-east-1.amazonaws.com/webchat.us1.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/23eb84a2-c2dd-4dd4-99bf-0d9540ddafb8/23eb84a2-c2dd-4dd4-99bf-0d9540ddafb8.bundle.js";
+  s.async=true;s.charset="UTF-8";
+  s.onload=function(){window.Webchat.init()};
+  document.head.appendChild(s);
+})();
+</script>
+
+<!-- WEBCALL -->
+<script>
+var webcallLoaded=false;
+function loadWebcall(){
+  if(webcallLoaded)return;
+  webcallLoaded=true;
+  var s=document.createElement("script");
+  s.src="https://s3.us-east-1.amazonaws.com/livekit.us1.webcall.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/99cad9e5-d58f-4e39-aeea-d339fe73dd14/99cad9e5-d58f-4e39-aeea-d339fe73dd14.bundle.js";
+  s.charset="UTF-8";
+  s.onload=function(){window.Webcall.init({container:document.getElementById("webcall-container")})};
+  document.head.appendChild(s);
+}
+function openCall(){
+  document.getElementById("modal-call").classList.add("open");
+  loadWebcall();
+}
+function closeCall(){document.getElementById("modal-call").classList.remove("open")}
+function closeCallOutside(e){if(e.target.id==="modal-call")closeCall()}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeCall()});
+</script>
+
+</body>
+</html>
