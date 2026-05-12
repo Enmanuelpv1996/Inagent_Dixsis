@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valeria — Precalificadora de Leads · Dixsis Demos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cream:#F4EFE8;--cream2:#EDE7DE;--brown:#3B2A1E;--brown2:#5C4033;--rust:#7A4A2E;--muted:#8C7B6E;--border:rgba(59,42,30,0.10);--border2:rgba(59,42,30,0.18);--rose:#C0456A;--rose-dim:rgba(192,69,106,0.10)}
+body{background:var(--cream);color:var(--brown);font-family:"DM Sans",sans-serif;min-height:100vh;display:flex;flex-direction:column}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 30% 20%,rgba(192,69,106,0.07) 0%,transparent 60%);pointer-events:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(244,239,232,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.back{display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:13px}
+.back:hover{color:var(--brown)}
+.back svg{width:16px;height:16px}
+.nav-tag{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 28px;position:relative;z-index:1;text-align:center}
+.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 24px;background:var(--rose-dim);color:var(--rose);border:1px solid rgba(192,69,106,0.2)}
+h1{font-family:"Playfair Display",serif;font-size:44px;font-weight:700;color:var(--brown);margin-bottom:8px}
+.role{font-size:14px;color:var(--muted);margin-bottom:28px}
+.desc{max-width:480px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:32px}
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.flow-step{display:flex;flex-direction:column;align-items:center;gap:6px;background:#fff;border:1px solid var(--border);border-radius:11px;padding:12px 16px;min-width:110px}
+.flow-icon{font-size:20px}
+.flow-label{font-size:11px;font-weight:500;color:var(--brown2);text-align:center;line-height:1.3}
+.flow-arrow{color:var(--muted);font-size:18px;flex-shrink:0}
+.flow-step.highlight{border-color:rgba(192,69,106,0.25);background:var(--rose-dim)}
+.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:36px}
+.tag{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid var(--border2);color:var(--muted);background:rgba(255,255,255,0.5)}
+.hint{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--border);padding:14px 20px;border-radius:11px;max-width:420px;line-height:1.6}
+footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;position:relative;z-index:1}
+footer a{color:var(--rust);text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+    Volver a demos
+  </a>
+  <span class="nav-tag">Ventas · Voicebot Outbound</span>
+</nav>
+
+<main>
+  <div class="avatar">V</div>
+  <h1>Valeria</h1>
+  <p class="role">Precalificadora de Leads · Nextel Plus</p>
+  <p class="desc">
+    Valeria realiza llamadas de prospección fría y precalifica al contacto 
+    en segundos. Si hay interés, transfiere al vendedor humano. 
+    Si no, cierra con cortesía y registra el resultado.
+  </p>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-icon">📞</div>
+      <div class="flow-label">Llamada saliente</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step highlight">
+      <div class="flow-icon">🎯</div>
+      <div class="flow-label">Valeria precalifica</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-icon">✅</div>
+      <div class="flow-label">Interesado → asesor humano</div>
+    </div>
+    <div class="flow-arrow">·</div>
+    <div class="flow-step">
+      <div class="flow-icon">🚫</div>
+      <div class="flow-label">No interesado → cierre cortés</div>
+    </div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Ventas outbound</span>
+    <span class="tag">Cold calling</span>
+    <span class="tag">WebCall · Voz</span>
+    <span class="tag">Transferencia a humano</span>
+    <span class="tag">Nextel Plus</span>
+  </div>
+
+  <div class="hint">
+    <strong>Tip para la demo:</strong> cuando Valeria llame, responde con disposición o rechazo natural — prueba los dos escenarios para ver cómo reacciona en cada caso.
+  </div>
+</main>
+
+<footer>
+  Demo por <a href="index.html">Dixsis</a> · powered by inConcert inAgent · <span style="opacity:0.5">Datos ficticios</span>
+</footer>
+
+<script>
+(function(){
+  var s=document.createElement("script");
+  s.src="https://s3.us-east-1.amazonaws.com/livekit.us1.webcall.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/dcb7c028-63ce-4e3f-9047-761dbbdebbcc/dcb7c028-63ce-4e3f-9047-761dbbdebbcc.bundle.js";
+  s.charset="UTF-8";
+  s.onload=function(){window.Webcall.init()};
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
