@@ -78,11 +78,12 @@ footer a{color:var(--rust);text-decoration:none}
     <span class="tag">4 agentes especializados</span>
     <span class="tag">Identificación automática</span>
     <span class="tag">Reinicio remoto</span>
+    <span class="tag">Webchat + WebCall</span>
     <span class="tag">CRM mock</span>
   </div>
 
   <div class="hint">
-    <strong>Tip para la demo:</strong> preséntate con tu nombre, reporta que no tienes internet y deja que Nova diagnostique y gestione tu caso automáticamente.
+    <strong>Tip para la demo:</strong> preséntate con tu nombre, reporta que no tienes internet y deja que Nova diagnostique y gestione tu caso. Disponible por chat de texto y por voz — recuerda mover uno de los botones flotantes al lado izquierdo en inAgent para que no se encimen.
   </div>
 </main>
 
@@ -96,6 +97,17 @@ footer a{color:var(--rust);text-decoration:none}
   s.src="https://s3.us-east-1.amazonaws.com/webchat.us1.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/313af006-932d-40a9-a0fc-85d6ddfe9f01/313af006-932d-40a9-a0fc-85d6ddfe9f01.bundle.js";
   s.async=true;s.charset="UTF-8";
   s.onload=function(){window.Webchat.init()};
+  document.head.appendChild(s);
+})();
+</script>
+
+<!-- WEBCALL -->
+<script>
+(function(){
+  var s=document.createElement("script");
+  s.src="https://s3.us-east-1.amazonaws.com/livekit.us1.webcall.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/7db7e308-ab1f-4e24-a9f7-d84b615175fd/7db7e308-ab1f-4e24-a9f7-d84b615175fd.bundle.js";
+  s.charset="UTF-8";
+  s.onload=function(){window.Webcall.init()};
   document.head.appendChild(s);
 })();
 </script>
