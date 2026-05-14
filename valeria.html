@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valeria — Precalificadora de Leads · Dixsis Demos</title>
+<title>Valeria — Precalificadora Outbound · Dixsis Demos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--cream:#F4EFE8;--cream2:#EDE7DE;--brown:#3B2A1E;--brown2:#5C4033;--rust:#7A4A2E;--muted:#8C7B6E;--border:rgba(59,42,30,0.10);--border2:rgba(59,42,30,0.18);--rose:#C0456A;--rose-dim:rgba(192,69,106,0.10)}
+:root{--cream:#F4EFE8;--cream2:#EDE7DE;--cream3:#E4DDD3;--brown:#3B2A1E;--brown2:#5C4033;--rust:#7A4A2E;--muted:#8C7B6E;--border:rgba(59,42,30,0.10);--border2:rgba(59,42,30,0.18);--rose:#C0456A;--rose-dim:rgba(192,69,106,0.10);--green:#2E8A57;--red:#C04545}
 body{background:var(--cream);color:var(--brown);font-family:"DM Sans",sans-serif;min-height:100vh;display:flex;flex-direction:column}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 30% 20%,rgba(192,69,106,0.07) 0%,transparent 60%);pointer-events:none}
 nav{position:sticky;top:0;z-index:100;background:rgba(244,239,232,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
@@ -16,22 +16,77 @@ nav{position:sticky;top:0;z-index:100;background:rgba(244,239,232,0.92);backdrop
 .back:hover{color:var(--brown)}
 .back svg{width:16px;height:16px}
 .nav-tag{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 28px;position:relative;z-index:1;text-align:center}
-.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 24px;background:var(--rose-dim);color:var(--rose);border:1px solid rgba(192,69,106,0.2)}
-h1{font-family:"Playfair Display",serif;font-size:44px;font-weight:700;color:var(--brown);margin-bottom:8px}
-.role{font-size:14px;color:var(--muted);margin-bottom:28px}
-.desc{max-width:480px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:32px}
-.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:36px}
-.flow-step{display:flex;flex-direction:column;align-items:center;gap:6px;background:#fff;border:1px solid var(--border);border-radius:11px;padding:12px 16px;min-width:110px}
-.flow-icon{font-size:20px}
-.flow-label{font-size:11px;font-weight:500;color:var(--brown2);text-align:center;line-height:1.3}
-.flow-arrow{color:var(--muted);font-size:18px;flex-shrink:0}
-.flow-step.highlight{border-color:rgba(192,69,106,0.25);background:var(--rose-dim)}
-.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:36px}
+main{flex:1;display:flex;flex-direction:column;align-items:center;padding:48px 28px 60px;position:relative;z-index:1;text-align:center}
+.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 20px;background:var(--rose-dim);color:var(--rose);border:1px solid rgba(192,69,106,0.2)}
+h1{font-family:"Playfair Display",serif;font-size:40px;font-weight:700;color:var(--brown);margin-bottom:6px}
+.role{font-size:14px;color:var(--muted);margin-bottom:16px}
+.desc{max-width:520px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:32px}
+
+/* ROI BOX */
+.roi-box{width:100%;max-width:620px;background:var(--brown);border-radius:14px;padding:20px 24px;margin-bottom:28px;text-align:left;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.roi-stat{text-align:center;flex:1;min-width:100px}
+.roi-num{font-family:"Playfair Display",serif;font-size:32px;font-weight:700;color:#F4EFE8;line-height:1}
+.roi-label{font-size:11px;color:rgba(244,239,232,0.55);margin-top:4px;line-height:1.4}
+.roi-divider{width:1px;background:rgba(255,255,255,0.12);align-self:stretch;flex-shrink:0}
+.roi-desc{font-size:13px;color:rgba(244,239,232,0.7);line-height:1.6;flex:2;min-width:160px}
+.roi-desc strong{color:#F4EFE8}
+
+/* FLUJO */
+.section-label-wide{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:14px;width:100%;max-width:620px;text-align:left}
+.flow-box{width:100%;max-width:620px;background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:28px}
+.flow-step{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+.flow-step:last-child{border-bottom:none}
+.flow-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;margin-top:1px}
+.flow-num{font-family:"Playfair Display",serif;font-size:11px;font-weight:700;color:var(--rose);opacity:0.5;margin-bottom:4px;letter-spacing:0.08em}
+.flow-title{font-size:13px;font-weight:600;color:var(--brown);margin-bottom:4px}
+.flow-detail{font-size:12.5px;color:var(--muted);line-height:1.5}
+.flow-quote{font-size:12px;color:var(--brown2);background:var(--cream);border-radius:6px;padding:7px 10px;margin-top:8px;font-style:italic;border-left:2px solid var(--rose)}
+
+/* OUTCOMES */
+.outcomes{width:100%;max-width:620px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+.outcome{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;text-align:left}
+.outcome-icon{font-size:24px;margin-bottom:8px}
+.outcome-title{font-size:13px;font-weight:700;color:var(--brown);margin-bottom:6px}
+.outcome-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:10px}
+.outcome-result{font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;display:inline-block}
+.outcome.interest .outcome-result{background:rgba(46,138,87,0.10);color:var(--green);border:1px solid rgba(46,138,87,0.2)}
+.outcome.reject .outcome-result{background:rgba(192,69,106,0.08);color:var(--rose);border:1px solid rgba(192,69,106,0.2)}
+.outcome.nocon .outcome-result{background:rgba(140,123,110,0.10);color:var(--muted);border:1px solid var(--border2)}
+
+/* ESCENARIOS */
+.scenarios-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px;width:100%;max-width:620px;text-align:left}
+.scenarios{width:100%;max-width:620px;display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.scenario{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-align:left}
+.scenario-num{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:var(--rose);opacity:0.3;line-height:1;flex-shrink:0;width:28px}
+.scenario-name{font-size:13px;font-weight:600;color:var(--brown);margin-bottom:4px}
+.scenario-desc{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.scenario-tip{font-size:12px;color:var(--brown2);background:var(--cream);border-radius:7px;padding:8px 10px;font-style:italic}
+.scenario-tip.green{background:rgba(46,138,87,0.07);border-left:2px solid var(--green)}
+.scenario-tip.red{background:rgba(192,69,106,0.07);border-left:2px solid var(--rose)}
+.scenario-tip.gray{background:var(--cream2);border-left:2px solid var(--muted)}
+
+/* REGLAS */
+.rules-box{width:100%;max-width:620px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin-bottom:28px;text-align:left}
+.rules-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px}
+.rule-row{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)}
+.rule-row:last-child{border-bottom:none}
+.rule-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.rule-text{font-size:12.5px;color:var(--brown2);line-height:1.5}
+
+.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:40px}
 .tag{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid var(--border2);color:var(--muted);background:rgba(255,255,255,0.5)}
-.hint{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--border);padding:14px 20px;border-radius:11px;max-width:420px;line-height:1.6}
+.cta-section{width:100%;max-width:620px;background:var(--brown);border-radius:16px;padding:28px;text-align:center}
+.cta-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.13em;color:rgba(244,239,232,0.5);margin-bottom:10px}
+.cta-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:#F4EFE8;margin-bottom:8px;line-height:1.2}
+.cta-sub{font-size:13px;color:rgba(244,239,232,0.65);margin-bottom:22px;line-height:1.6}
+.cta-buttons{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:opacity 0.15s,transform 0.15s;border:none;cursor:pointer}
+.cta-btn:hover{opacity:0.88;transform:translateY(-1px)}
+.cta-btn.primary{background:#F4EFE8;color:var(--brown)}
+.cta-btn.secondary{background:rgba(255,255,255,0.10);color:#F4EFE8;border:1px solid rgba(255,255,255,0.2)}
 footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;position:relative;z-index:1}
 footer a{color:var(--rust);text-decoration:none}
+@media(max-width:560px){.outcomes{grid-template-columns:1fr}.roi-box{flex-direction:column}.roi-divider{width:100%;height:1px}.cta-buttons{flex-direction:column}.cta-btn{justify-content:center}}
 </style>
 </head>
 <body>
@@ -41,7 +96,7 @@ footer a{color:var(--rust);text-decoration:none}
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
     Volver a demos
   </a>
-  <span class="nav-tag">Ventas · Voicebot Outbound</span>
+  <span class="nav-tag">Ventas · Voicebot Outbound · Cold Calling</span>
 </nav>
 
 <main>
@@ -49,30 +104,141 @@ footer a{color:var(--rust);text-decoration:none}
   <h1>Valeria</h1>
   <p class="role">Precalificadora de Leads · Nextel Plus</p>
   <p class="desc">
-    Valeria realiza llamadas de prospección fría y precalifica al contacto 
-    en segundos. Si hay interés, transfiere al vendedor humano. 
-    Si no, cierra con cortesía y registra el resultado.
+    Valeria hace el trabajo más difícil de ventas: el primer contacto en frío.
+    En los primeros 15 segundos detecta si hay interés y transfiere al vendedor humano — 
+    o cierra con cortesía si no lo hay. Sin gastar tiempo de nadie.
   </p>
 
-  <div class="flow">
-    <div class="flow-step">
-      <div class="flow-icon">📞</div>
-      <div class="flow-label">Llamada saliente</div>
+  <!-- ROI -->
+  <div class="roi-box">
+    <div class="roi-stat">
+      <div class="roi-num">1,000</div>
+      <div class="roi-label">llamadas outbound por día</div>
     </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step highlight">
-      <div class="flow-icon">🎯</div>
-      <div class="flow-label">Valeria precalifica</div>
+    <div class="roi-divider"></div>
+    <div class="roi-stat">
+      <div class="roi-num">~30%</div>
+      <div class="roi-label">tasa típica de interés</div>
     </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="flow-icon">✅</div>
-      <div class="flow-label">Interesado → asesor humano</div>
+    <div class="roi-divider"></div>
+    <div class="roi-stat">
+      <div class="roi-num">700</div>
+      <div class="roi-label">rechazos que Valeria absorbe sola</div>
     </div>
-    <div class="flow-arrow">·</div>
+    <div class="roi-divider"></div>
+    <div class="roi-desc"><strong>El vendedor humano solo entra cuando ya hay interés.</strong> Valeria filtra el ruido. El equipo comercial cierra.</div>
+  </div>
+
+  <!-- FLUJO -->
+  <div class="section-label-wide">📞 Así funciona cada llamada</div>
+  <div class="flow-box">
     <div class="flow-step">
-      <div class="flow-icon">🚫</div>
-      <div class="flow-label">No interesado → cierre cortés</div>
+      <div class="flow-icon" style="background:rgba(192,69,106,0.10)">📲</div>
+      <div>
+        <div class="flow-num">PASO 01</div>
+        <div class="flow-title">Apertura — los primeros 5 segundos</div>
+        <div class="flow-detail">Valeria saluda, se identifica y enuncia el motivo en una sola frase. Natural, no robótica.</div>
+        <div class="flow-quote">"Buenas tardes. Soy Valeria, de Nextel Plus. Le llamo porque tenemos una propuesta especial disponible para usted en su plan de telefonía."</div>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-icon" style="background:rgba(46,138,87,0.10)">👂</div>
+      <div>
+        <div class="flow-num">PASO 02</div>
+        <div class="flow-title">Detección de interés implícito</div>
+        <div class="flow-detail">Si el prospecto sigue en línea y no rechaza, es interés. Valeria no espera más — actúa de inmediato.</div>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-icon" style="background:rgba(192,69,106,0.10)">🔄</div>
+      <div>
+        <div class="flow-num">PASO 03</div>
+        <div class="flow-title">Puente natural a la transferencia</div>
+        <div class="flow-detail">Simula una consulta en sistema — crea una pausa natural que no suena a traspaso brusco.</div>
+        <div class="flow-quote">"Perfecto. Déjeme verificar un momento su información en mi sistema... Ahora mismo le comunico con uno de nuestros asesores."</div>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-icon" style="background:rgba(140,123,110,0.10)">🚫</div>
+      <div>
+        <div class="flow-num">PASO 04</div>
+        <div class="flow-title">Cierre por rechazo</div>
+        <div class="flow-detail">Si el prospecto dice que no le interesa o está ocupado, Valeria cierra con cortesía y registra el resultado.</div>
+        <div class="flow-quote">"Entendido, no hay ningún problema. Que tenga muy buen día."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTCOMES -->
+  <div class="section-label-wide">🎯 Los 3 resultados posibles</div>
+  <div class="outcomes">
+    <div class="outcome interest">
+      <div class="outcome-icon">✅</div>
+      <div class="outcome-title">Interés detectado</div>
+      <div class="outcome-desc">El prospecto escucha o responde positivamente. Valeria transfiere de inmediato al vendedor humano con contexto.</div>
+      <span class="outcome-result">→ Transfiere a asesor</span>
+    </div>
+    <div class="outcome reject">
+      <div class="outcome-icon">🚫</div>
+      <div class="outcome-title">Rechazo explícito</div>
+      <div class="outcome-desc">El prospecto dice que no le interesa o que está ocupado. Valeria cierra con cortesía y registra.</div>
+      <span class="outcome-result">→ Registra: rechazado</span>
+    </div>
+    <div class="outcome nocon">
+      <div class="outcome-icon">📵</div>
+      <div class="outcome-title">No contacto</div>
+      <div class="outcome-desc">Nadie contesta o la llamada se corta antes de que el prospecto hable. Valeria registra el intento.</div>
+      <span class="outcome-result">→ Registra: no_contactado</span>
+    </div>
+  </div>
+
+  <!-- ESCENARIOS -->
+  <div class="scenarios-title">🎬 Prueba estos 3 escenarios en la llamada</div>
+  <div class="scenarios">
+    <div class="scenario">
+      <div class="scenario-num">01</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Interés implícito → transferencia</div>
+        <div class="scenario-desc">Cuando Valeria termine su apertura, simplemente quédate en silencio o di algo neutral. Verás cómo detecta el interés y ejecuta el puente a transferencia sin hacer más preguntas.</div>
+        <div class="scenario-tip green">Cuando Valeria hable, responde: "Sí, ¿de qué se trata?" o simplemente di "ajá" y espera</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">02</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Rechazo explícito → cierre cortés</div>
+        <div class="scenario-desc">Valeria cierra con cortesía, sin insistir ni reintentar. Demuestra que el agente respeta el tiempo del prospecto y registra el resultado automáticamente.</div>
+        <div class="scenario-tip red">Cuando Valeria hable, responde: "No me interesa" o "Estoy ocupado, no gracias"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">03</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Intento de desviar el tema</div>
+        <div class="scenario-desc">Valeria no cotiza, no explica planes y no responde preguntas fuera de su scope. Demuestra las reglas duras del agente.</div>
+        <div class="scenario-tip gray">Cuando Valeria hable, pregunta: "¿Cuánto cuesta el plan?" o "¿Cuánto tardará la instalación?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGLAS DURAS -->
+  <div class="rules-box">
+    <div class="rules-title">🔒 Reglas duras de Valeria — pruébalas</div>
+    <div class="rule-row">
+      <div class="rule-icon">🚫</div>
+      <div class="rule-text">Nunca menciona precios, tarifas, velocidades ni condiciones de ningún plan</div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-icon">⏱️</div>
+      <div class="rule-text">Máximo 2 turnos de conversación antes de transferir o cerrar — no engancha al prospecto innecesariamente</div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-icon">🔄</div>
+      <div class="rule-text">No reintenta si hay rechazo explícito — una sola objeción clara es suficiente para cerrar con cortesía</div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-icon">📵</div>
+      <div class="rule-text">Diseñada exclusivamente para voz — no opera en texto ni chat</div>
     </div>
   </div>
 
@@ -80,12 +246,24 @@ footer a{color:var(--rust);text-decoration:none}
     <span class="tag">Ventas outbound</span>
     <span class="tag">Cold calling</span>
     <span class="tag">WebCall · Voz</span>
-    <span class="tag">Transferencia a humano</span>
+    <span class="tag">Transferencia condicional</span>
+    <span class="tag">Registro en CRM</span>
     <span class="tag">Nextel Plus</span>
   </div>
 
-  <div class="hint">
-    <strong>Tip para la demo:</strong> cuando Valeria llame, responde con disposición o rechazo natural — prueba los dos escenarios para ver cómo reacciona en cada caso.
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-eyebrow">¿Te gustó lo que viste?</div>
+    <div class="cta-title">Diseñamos tu agente<br>a la medida de tu operación</div>
+    <div class="cta-sub">Cuéntanos tu caso de uso y te proponemos una solución concreta.<br>Primera conversación sin costo.</div>
+    <div class="cta-buttons">
+      <a class="cta-btn primary" href="mailto:info@dixsis.com?subject=Quiero%20saber%20más%20sobre%20agentes%20IA&body=Hola%2C%20acabo%20de%20ver%20la%20demo%20de%20Valeria%20en%20demos.dixsis.com%20y%20me%20interesa%20saber%20más.">
+        ✉️ Escríbenos a info@dixsis.com
+      </a>
+      <a class="cta-btn secondary" href="https://www.linkedin.com/company/dixsis/" target="_blank">
+        💼 Síguenos en LinkedIn
+      </a>
+    </div>
   </div>
 </main>
 
