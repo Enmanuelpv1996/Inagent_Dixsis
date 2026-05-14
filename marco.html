@@ -3,58 +3,217 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marco — Atención al Cliente · Dixsis Demos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--cream:#F4EFE8;--cream2:#EDE7DE;--brown:#3B2A1E;--brown2:#5C4033;--rust:#7A4A2E;--muted:#8C7B6E;--border:rgba(59,42,30,0.10);--border2:rgba(59,42,30,0.18)}
+:root{--cream:#F4EFE8;--cream2:#EDE7DE;--brown:#3B2A1E;--brown2:#5C4033;--rust:#7A4A2E;--muted:#8C7B6E;--border:rgba(59,42,30,0.10);--border2:rgba(59,42,30,0.18);--blue:#3B6FD4;--blue-dim:rgba(59,111,212,0.10)}
 body{background:var(--cream);color:var(--brown);font-family:"DM Sans",sans-serif;min-height:100vh;display:flex;flex-direction:column}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 30% 20%,rgba(59,111,212,0.07) 0%,transparent 60%);pointer-events:none}
 nav{position:sticky;top:0;z-index:100;background:rgba(244,239,232,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
 .back{display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:13px}
 .back:hover{color:var(--brown)}
 .back svg{width:16px;height:16px}
 .nav-tag{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 28px;text-align:center}
-.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 24px}
-h1{font-family:"Playfair Display",serif;font-size:44px;font-weight:700;color:var(--brown);margin-bottom:8px}
-.role{font-size:14px;color:var(--muted);margin-bottom:28px}
-.desc{max-width:460px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:36px}
-.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:36px}
+main{flex:1;display:flex;flex-direction:column;align-items:center;padding:48px 28px 60px;position:relative;z-index:1;text-align:center}
+.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 20px;background:var(--blue-dim);color:var(--blue);border:1px solid rgba(59,111,212,0.2)}
+h1{font-family:"Playfair Display",serif;font-size:40px;font-weight:700;color:var(--brown);margin-bottom:6px}
+.role{font-size:14px;color:var(--muted);margin-bottom:16px}
+.desc{max-width:520px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:32px}
+.demo-box{width:100%;max-width:560px;background:#fff;border:1px solid var(--border2);border-radius:14px;padding:20px 24px;margin-bottom:10px;text-align:left}
+.demo-box-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:14px}
+.demo-name{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:var(--brown);margin-bottom:12px}
+.demo-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.demo-field{display:flex;flex-direction:column;gap:2px}
+.demo-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted)}
+.demo-val{font-size:13px;font-weight:500;color:var(--brown2)}
+.demo-note{font-size:12px;color:var(--muted);background:var(--cream);border-radius:8px;padding:10px 12px;line-height:1.5}
+.demo-note strong{color:var(--blue)}
+.accounts-box{width:100%;max-width:560px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin-bottom:28px;text-align:left}
+.accounts-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px}
+.account-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)}
+.account-row:last-child{border-bottom:none}
+.account-num{font-size:12px;font-weight:600;color:var(--blue);font-family:monospace;flex-shrink:0;min-width:100px}
+.account-name{font-size:13px;color:var(--brown2);flex:1}
+.account-detail{font-size:11px;color:var(--muted);text-align:right}
+.scenarios-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px;width:100%;max-width:560px;text-align:left}
+.scenarios{width:100%;max-width:560px;display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.scenario{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-align:left}
+.scenario-num{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:var(--blue);opacity:0.3;line-height:1;flex-shrink:0;width:28px}
+.scenario-name{font-size:13px;font-weight:600;color:var(--brown);margin-bottom:4px}
+.scenario-desc{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.scenario-tip{font-size:12px;color:var(--brown2);background:var(--cream);border-radius:7px;padding:8px 10px;font-style:italic}
+.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:40px}
 .tag{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid var(--border2);color:var(--muted);background:rgba(255,255,255,0.5)}
-.hint{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--border);padding:14px 20px;border-radius:11px;max-width:380px;display:flex;align-items:center;gap:10px}
-.hint-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;animation:pulse 1.8s ease infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+
+/* CTA */
+.cta-section{width:100%;max-width:560px;background:var(--brown);border-radius:16px;padding:28px 28px;text-align:center;margin-bottom:0}
+.cta-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.13em;color:rgba(244,239,232,0.5);margin-bottom:10px}
+.cta-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:#F4EFE8;margin-bottom:8px;line-height:1.2}
+.cta-sub{font-size:13px;color:rgba(244,239,232,0.65);margin-bottom:22px;line-height:1.6}
+.cta-buttons{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:opacity 0.15s,transform 0.15s;cursor:pointer;border:none}
+.cta-btn:hover{opacity:0.88;transform:translateY(-1px)}
+.cta-btn.primary{background:#F4EFE8;color:var(--brown)}
+.cta-btn.secondary{background:rgba(255,255,255,0.10);color:#F4EFE8;border:1px solid rgba(255,255,255,0.2)}
+
+footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;position:relative;z-index:1}
 footer a{color:var(--rust);text-decoration:none}
+@media(max-width:560px){.demo-fields{grid-template-columns:1fr}.account-detail{display:none}.cta-buttons{flex-direction:column}.cta-btn{justify-content:center}}
 </style>
-<title>Marco — Atención al Cliente · Dixsis Demos</title>
 </head>
 <body>
+
 <nav>
   <a class="back" href="index.html">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
     Volver a demos
   </a>
-  <span class="nav-tag">Utilities · RAG</span>
+  <span class="nav-tag">Utilities · RAG · Function Calling</span>
 </nav>
+
 <main>
-  <div class="avatar" style="background:#EFF4FF;color:#3B6FD4;border:1px solid rgba(59,111,212,0.15)">M</div>
+  <div class="avatar">M</div>
   <h1>Marco</h1>
   <p class="role">Asistente de Atención al Cliente · LumenMX</p>
-  <p class="desc">Resuelve dudas sobre tu cuenta, reporta fallas y consulta el estado de tus reportes. Pregúntale sobre consumo, tarifas o procedimientos — consulta sus bases de conocimiento en tiempo real.</p>
+  <p class="desc">
+    Agente de atención al cliente para una empresa de servicios eléctricos. 
+    Consulta cuentas en tiempo real, levanta reportes de falla, cita sus fuentes 
+    y sabe cuándo escalar a un humano — con contexto completo.
+  </p>
+
+  <!-- CLIENTE PRINCIPAL -->
+  <div class="demo-box">
+    <div class="demo-box-title">👤 Cliente principal para esta demo</div>
+    <div class="demo-name">Juan Pérez García</div>
+    <div class="demo-fields">
+      <div class="demo-field"><span class="demo-label">Número de servicio</span><span class="demo-val">8800123456</span></div>
+      <div class="demo-field"><span class="demo-label">Tarifa</span><span class="demo-val">DAC</span></div>
+      <div class="demo-field"><span class="demo-label">Último consumo</span><span class="demo-val">412 kWh</span></div>
+      <div class="demo-field"><span class="demo-label">Último recibo</span><span class="demo-val">$2,450 MXN</span></div>
+      <div class="demo-field"><span class="demo-label">Adeudo</span><span class="demo-val">Sin adeudo</span></div>
+      <div class="demo-field"><span class="demo-label">Servicio</span><span class="demo-val">Activo</span></div>
+    </div>
+    <div class="demo-note">Usa <strong>8800123456</strong> para que Marco identifique la cuenta y muestre los datos en tiempo real.</div>
+  </div>
+
+  <!-- OTRAS CUENTAS -->
+  <div class="accounts-box">
+    <div class="accounts-title">📋 Otras cuentas disponibles</div>
+    <div class="account-row">
+      <span class="account-num">8800456789</span>
+      <span class="account-name">María López</span>
+      <span class="account-detail">Con adeudo $850</span>
+    </div>
+    <div class="account-row">
+      <span class="account-num">8800999999</span>
+      <span class="account-name">Tacos del Centro</span>
+      <span class="account-detail">Comercial</span>
+    </div>
+    <div class="account-row">
+      <span class="account-num">8800111222</span>
+      <span class="account-name">Pedro Hernández</span>
+      <span class="account-detail">Cliente modelo</span>
+    </div>
+    <div class="account-row">
+      <span class="account-num">8800555000</span>
+      <span class="account-name">Ana Martínez</span>
+      <span class="account-detail">DAC · Suspendida</span>
+    </div>
+  </div>
+
+  <!-- ESCENARIOS -->
+  <div class="scenarios-title">🎯 Escenarios disponibles</div>
+  <div class="scenarios">
+    <div class="scenario">
+      <div class="scenario-num">01</div>
+      <div class="scenario-body">
+        <div class="scenario-name">RAG con cita de fuente</div>
+        <div class="scenario-desc">Marco responde con el dato exacto y cita la sección del manual oficial. No inventa nada.</div>
+        <div class="scenario-tip">"¿cuánto cuesta el kWh en tarifa DAC?"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">02</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Consulta de cuenta en tiempo real</div>
+        <div class="scenario-desc">Marco invoca la herramienta, consulta el sistema y presenta los datos del cliente de forma natural.</div>
+        <div class="scenario-tip">"mi número de servicio es 8800123456"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">03</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Reporte de falla con contexto</div>
+        <div class="scenario-desc">Marco mantiene contexto entre turnos, infiere el tipo de falla y levanta el reporte con folio.</div>
+        <div class="scenario-tip">"se fue la luz en toda mi calle" → luego: "colonia Roma Norte, CP 06700"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">04</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Moderadores en acción</div>
+        <div class="scenario-desc">Prueba los guardrails: intenta llevarlo a temas fuera de scope o usa lenguaje agresivo.</div>
+        <div class="scenario-tip">"tu servicio es una basura" · "¿es justa la tarifa DAC?"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">05</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Emergencia + transferencia</div>
+        <div class="scenario-desc">Marco detecta riesgo, da instrucciones de seguridad y transfiere al humano con contexto.</div>
+        <div class="scenario-tip">"veo chispas saliendo del medidor de mi casa"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">06</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Honestidad epistémica</div>
+        <div class="scenario-desc">Marco no inventa. Si no está en sus fuentes, lo dice y reencuadra su alcance.</div>
+        <div class="scenario-tip">"¿desde cuándo existe LumenMX?" · "¿cuántos empleados tienen?"</div>
+      </div>
+    </div>
+  </div>
+
   <div class="tags">
     <span class="tag">Utilities</span>
     <span class="tag">RAG · PDF + FAQ</span>
+    <span class="tag">Function calling</span>
+    <span class="tag">Moderadores</span>
     <span class="tag">Escalamiento inteligente</span>
-    <span class="tag">Mock APIs</span>
+    <span class="tag">Anti-alucinación</span>
   </div>
-  <div class="hint">
-    <div class="hint-dot" style="background:#3B6FD4"></div>
-    Marco está activo — abre el chat con el botón en la esquina inferior derecha
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-eyebrow">¿Te gustó lo que viste?</div>
+    <div class="cta-title">Diseñamos tu agente<br>a la medida de tu operación</div>
+    <div class="cta-sub">Cuéntanos tu caso de uso y te proponemos una solución concreta.<br>Sin compromiso — primera conversación sin costo.</div>
+    <div class="cta-buttons">
+      <a class="cta-btn primary" href="mailto:info@dixsis.com?subject=Quiero%20saber%20más%20sobre%20agentes%20IA&body=Hola%2C%20acabo%20de%20ver%20la%20demo%20de%20Marco%20en%20demos.dixsis.com%20y%20me%20interesa%20saber%20más.">
+        ✉️ Escríbenos a info@dixsis.com
+      </a>
+      <a class="cta-btn secondary" href="https://www.linkedin.com/company/dixsis/" target="_blank">
+        💼 Síguenos en LinkedIn
+      </a>
+    </div>
   </div>
 </main>
-<footer>Demo por <a href="index.html">Dixsis</a> · powered by inConcert inAgent · <span style="opacity:0.5">Datos ficticios</span></footer>
+
+<footer>
+  Demo por <a href="index.html">Dixsis</a> · powered by inConcert inAgent · <span style="opacity:0.5">Datos ficticios</span>
+</footer>
+
 <script>
-(function(){var s=document.createElement("script");s.src="https://s3.us-east-1.amazonaws.com/webchat.us1.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/89933772-2d22-4e74-972c-7b090322006f/89933772-2d22-4e74-972c-7b090322006f.bundle.js";s.async=true;s.charset="UTF-8";s.onload=function(){window.Webchat.init()};document.head.appendChild(s)})();
+(function(){
+  var s=document.createElement("script");
+  s.src="https://s3.us-east-1.amazonaws.com/webchat.us1.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/89933772-2d22-4e74-972c-7b090322006f/89933772-2d22-4e74-972c-7b090322006f.bundle.js";
+  s.async=true;s.charset="UTF-8";
+  s.onload=function(){window.Webchat.init()};
+  document.head.appendChild(s);
+})();
 </script>
-</body></html>
+
+</body>
+</html>
