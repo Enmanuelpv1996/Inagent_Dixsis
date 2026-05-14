@@ -3,58 +3,369 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofía — Asesora Inmobiliaria · Dixsis Demos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--cream:#F4EFE8;--cream2:#EDE7DE;--brown:#3B2A1E;--brown2:#5C4033;--rust:#7A4A2E;--muted:#8C7B6E;--border:rgba(59,42,30,0.10);--border2:rgba(59,42,30,0.18)}
+:root{--cream:#F4EFE8;--cream2:#EDE7DE;--brown:#3B2A1E;--brown2:#5C4033;--rust:#7A4A2E;--muted:#8C7B6E;--border:rgba(59,42,30,0.10);--border2:rgba(59,42,30,0.18);--teal:#2E7D6E;--teal-dim:rgba(46,125,110,0.10)}
 body{background:var(--cream);color:var(--brown);font-family:"DM Sans",sans-serif;min-height:100vh;display:flex;flex-direction:column}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 30% 20%,rgba(46,125,110,0.07) 0%,transparent 60%);pointer-events:none}
 nav{position:sticky;top:0;z-index:100;background:rgba(244,239,232,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
 .back{display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:13px}
 .back:hover{color:var(--brown)}
 .back svg{width:16px;height:16px}
 .nav-tag{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 28px;text-align:center}
-.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 24px}
-h1{font-family:"Playfair Display",serif;font-size:44px;font-weight:700;color:var(--brown);margin-bottom:8px}
-.role{font-size:14px;color:var(--muted);margin-bottom:28px}
-.desc{max-width:460px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:36px}
-.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:36px}
+main{flex:1;display:flex;flex-direction:column;align-items:center;padding:48px 28px 60px;position:relative;z-index:1;text-align:center}
+.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 20px;background:var(--teal-dim);color:var(--teal);border:1px solid rgba(46,125,110,0.2)}
+h1{font-family:"Playfair Display",serif;font-size:40px;font-weight:700;color:var(--brown);margin-bottom:6px}
+.role{font-size:14px;color:var(--muted);margin-bottom:16px}
+.desc{max-width:520px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:32px}
+
+/* CALIFICACIÓN */
+.demo-box{width:100%;max-width:560px;background:#fff;border:1px solid var(--border2);border-radius:14px;padding:20px 24px;margin-bottom:10px;text-align:left}
+.demo-box-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:14px}
+.qual-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.qual-item{background:var(--cream);border-radius:9px;padding:10px 12px}
+.qual-num{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;color:var(--teal);opacity:0.4;line-height:1;margin-bottom:4px}
+.qual-label{font-size:12px;font-weight:600;color:var(--brown);margin-bottom:2px}
+.qual-hint{font-size:11px;color:var(--muted);line-height:1.4}
+.demo-note{font-size:12px;color:var(--muted);background:var(--cream);border-radius:8px;padding:10px 12px;line-height:1.5}
+.demo-note strong{color:var(--teal)}
+
+/* PROYECTOS */
+.projects{width:100%;max-width:560px;display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
+.project{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-align:left}
+.project-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;gap:10px}
+.project-name{font-size:14px;font-weight:700;color:var(--brown)}
+.project-price{font-size:12px;font-weight:600;color:var(--teal)}
+.project-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.project-badge{font-size:10px;padding:3px 8px;border-radius:5px;border:1px solid var(--border);color:var(--muted);background:var(--cream)}
+.project-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* EQUIPO */
+.team-box{width:100%;max-width:560px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin-bottom:28px;text-align:left}
+.team-box-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px}
+.team-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border)}
+.team-row:last-child{border-bottom:none}
+.team-avatar{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:14px;font-weight:700;flex-shrink:0}
+.team-name{font-size:13px;font-weight:600;color:var(--brown)}
+.team-role{font-size:11px;color:var(--muted)}
+.team-arrow{margin-left:auto;font-size:11px;color:var(--muted);background:var(--cream);padding:3px 8px;border-radius:5px}
+
+/* ESCENARIOS */
+.scenarios-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px;width:100%;max-width:560px;text-align:left;margin-top:8px}
+.scenarios{width:100%;max-width:560px;display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.scenario{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-align:left}
+.scenario-num{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:var(--teal);opacity:0.3;line-height:1;flex-shrink:0;width:28px}
+.scenario-name{font-size:13px;font-weight:600;color:var(--brown);margin-bottom:4px}
+.scenario-desc{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.scenario-tip{font-size:12px;color:var(--brown2);background:var(--cream);border-radius:7px;padding:8px 10px;font-style:italic}
+
+.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:40px}
 .tag{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid var(--border2);color:var(--muted);background:rgba(255,255,255,0.5)}
-.hint{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--border);padding:14px 20px;border-radius:11px;max-width:380px;display:flex;align-items:center;gap:10px}
-.hint-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;animation:pulse 1.8s ease infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+.section-label-wide{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:14px;width:100%;max-width:860px;text-align:left}
+.projects-grid{width:100%;max-width:860px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:28px}
+.pcard{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.pcard-header{padding:20px;color:#fff}
+.pcard-tipo{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;opacity:0.7;margin-bottom:6px}
+.pcard-name{font-family:"Playfair Display",serif;font-size:20px;font-weight:700;margin-bottom:6px;line-height:1.2}
+.pcard-loc{font-size:12px;opacity:0.8;margin-bottom:8px}
+.pcard-price{font-size:13px;font-weight:600;background:rgba(255,255,255,0.15);display:inline-block;padding:4px 10px;border-radius:6px}
+.pcard-body{padding:16px;flex:1;display:flex;flex-direction:column;gap:10px}
+.pcard-section-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:4px}
+.pcard-items{display:flex;flex-direction:column;gap:4px}
+.pcard-item{font-size:12px;color:var(--brown2);padding:5px 8px;background:var(--cream);border-radius:6px}
+.pcard-amenities{display:flex;flex-wrap:wrap;gap:5px}
+.amenity{font-size:11px;padding:3px 8px;border-radius:5px;border:1px solid var(--border);color:var(--brown2);background:var(--cream)}
+.pcard-avail{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--muted);background:var(--cream2);border-radius:7px;padding:8px 10px;margin-top:2px}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:#2E8A57;flex-shrink:0;animation:pulse 1.8s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
+.pcard-tip{font-size:11.5px;color:var(--brown2);background:linear-gradient(135deg,rgba(46,125,110,0.06),rgba(46,125,110,0.02));border:1px solid rgba(46,125,110,0.15);border-radius:7px;padding:8px 10px;font-style:italic;margin-top:auto}
+.pcard-tip::before{content:"💬 ";font-style:normal}
+.cta-section{width:100%;max-width:560px;background:var(--brown);border-radius:16px;padding:28px;text-align:center}
+.cta-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.13em;color:rgba(244,239,232,0.5);margin-bottom:10px}
+.cta-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:#F4EFE8;margin-bottom:8px;line-height:1.2}
+.cta-sub{font-size:13px;color:rgba(244,239,232,0.65);margin-bottom:22px;line-height:1.6}
+.cta-buttons{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:opacity 0.15s,transform 0.15s;border:none;cursor:pointer}
+.cta-btn:hover{opacity:0.88;transform:translateY(-1px)}
+.cta-btn.primary{background:#F4EFE8;color:var(--brown)}
+.cta-btn.secondary{background:rgba(255,255,255,0.10);color:#F4EFE8;border:1px solid rgba(255,255,255,0.2)}
+footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;position:relative;z-index:1}
 footer a{color:var(--rust);text-decoration:none}
+@media(max-width:560px){.qual-grid{grid-template-columns:1fr}.cta-buttons{flex-direction:column}.cta-btn{justify-content:center}}
 </style>
-<title>Sofía — Asesora Inmobiliaria · Dixsis Demos</title>
 </head>
 <body>
+
 <nav>
   <a class="back" href="index.html">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
     Volver a demos
   </a>
-  <span class="nav-tag">Inmobiliaria · Multi-agente</span>
+  <span class="nav-tag">Inmobiliaria · Multi-agente · 3 Especialistas</span>
 </nav>
+
 <main>
-  <div class="avatar" style="background:#FDF3EC;color:#7A4A2E;border:1px solid rgba(122,74,46,0.15)">S</div>
+  <div class="avatar">S</div>
   <h1>Sofía</h1>
-  <p class="role">Asesora Inmobiliaria · Demo Inmobiliaria</p>
-  <p class="desc">Califica tu perfil como comprador, presenta desarrollos disponibles y agenda visitas. Observa cómo el sistema transfiere la conversación entre agentes especializados de forma fluida.</p>
+  <p class="role">Asesora de Bienvenida · NOVA Desarrollos</p>
+  <p class="desc">
+    Sofía califica a los prospectos con 4 preguntas clave y los conecta con el especialista correcto. 
+    Demuestra orquestación multi-agente en tiempo real: Sofía recibe, Rodrigo asesora, Valeria agenda.
+  </p>
+
+  <!-- CALIFICACIÓN -->
+  <div class="demo-box">
+    <div class="demo-box-title">🎯 Los 4 datos que Sofía necesita calificar</div>
+    <div class="qual-grid">
+      <div class="qual-item">
+        <div class="qual-num">01</div>
+        <div class="qual-label">Propósito</div>
+        <div class="qual-hint">¿Para vivir, invertir o uso comercial?</div>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">02</div>
+        <div class="qual-label">Presupuesto</div>
+        <div class="qual-hint">Rango aproximado en MXN</div>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">03</div>
+        <div class="qual-label">Ubicación</div>
+        <div class="qual-hint">Ciudad o zona de preferencia</div>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">04</div>
+        <div class="qual-label">Timeline</div>
+        <div class="qual-hint">¿Cuándo planea comprar?</div>
+      </div>
+    </div>
+    <div class="demo-note">Sofía <strong>no revelará precios ni detalles</strong> hasta tener los 4 datos. Es una regla dura del agente — pruébala.</div>
+  </div>
+
+  <!-- PROYECTOS -->
+  <div class="section-label-wide">🏗️ Desarrollos disponibles — pregúntale a Sofía sobre cualquiera</div>
+  <div class="projects-grid">
+
+    <!-- JARDINES -->
+    <div class="pcard">
+      <div class="pcard-header" style="background:linear-gradient(135deg,#2E7D6E 0%,#1a5c50 100%)">
+        <div class="pcard-tipo">Residencial · Familiar</div>
+        <div class="pcard-name">Jardines de Pedregal</div>
+        <div class="pcard-loc">📍 Tlajomulco de Zúñiga, Jalisco</div>
+        <div class="pcard-price">Desde $1,850,000 MXN</div>
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-section-title">🏠 Opciones</div>
+        <div class="pcard-items">
+          <div class="pcard-item">Casa 3 rec · 110 m² · $1,850,000</div>
+          <div class="pcard-item">Casa 4 rec · 140 m² · $2,400,000</div>
+          <div class="pcard-item">Casa 4 rec plus · 160 m² · $2,900,000</div>
+        </div>
+        <div class="pcard-section-title">✨ Amenidades</div>
+        <div class="pcard-amenities">
+          <span class="amenity">🏊 Alberca</span>
+          <span class="amenity">💪 Gimnasio</span>
+          <span class="amenity">🛡️ Vigilancia 24/7</span>
+          <span class="amenity">🌳 Parque central</span>
+          <span class="amenity">🧒 Área infantil</span>
+          <span class="amenity">⚽ Cancha</span>
+        </div>
+        <div class="pcard-section-title">💳 Financiamiento</div>
+        <div class="pcard-amenities">
+          <span class="amenity">Infonavit</span>
+          <span class="amenity">Fovissste</span>
+          <span class="amenity">Hipotecario bancario</span>
+          <span class="amenity">Contado −5%</span>
+        </div>
+        <div class="pcard-avail">
+          <span class="avail-dot"></span>12 unidades con entrega inmediata · Fase 2 en preventa
+        </div>
+        <div class="pcard-tip">"Busco casa familiar en Guadalajara, presupuesto 2 millones"</div>
+      </div>
+    </div>
+
+    <!-- ALTAVISTA -->
+    <div class="pcard">
+      <div class="pcard-header" style="background:linear-gradient(135deg,#3B5BA5 0%,#243870 100%)">
+        <div class="pcard-tipo">Premium · Plusvalía</div>
+        <div class="pcard-name">Altavista Residences</div>
+        <div class="pcard-loc">📍 Santa Fe, Ciudad de México</div>
+        <div class="pcard-price">Desde $4,200,000 MXN</div>
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-section-title">🏢 Opciones</div>
+        <div class="pcard-items">
+          <div class="pcard-item">2 rec · 90 m² · $4,200,000</div>
+          <div class="pcard-item">3 rec · 130 m² · $6,100,000</div>
+          <div class="pcard-item">3 rec + estudio · 160 m² · $7,400,000</div>
+          <div class="pcard-item">Penthouse · 185 m² · $8,900,000 (2 disp.)</div>
+        </div>
+        <div class="pcard-section-title">✨ Amenidades</div>
+        <div class="pcard-amenities">
+          <span class="amenity">🌇 Rooftop panorámico</span>
+          <span class="amenity">💻 Coworking</span>
+          <span class="amenity">🧖 Spa & wellness</span>
+          <span class="amenity">🛎️ Concierge 24/7</span>
+          <span class="amenity">🚗 Valet parking</span>
+          <span class="amenity">🎉 Salón eventos</span>
+        </div>
+        <div class="pcard-section-title">📈 Inversión</div>
+        <div class="pcard-amenities">
+          <span class="amenity">Retorno 8% anual en renta</span>
+          <span class="amenity">Plusvalía +12% últimos 2 años</span>
+          <span class="amenity">Certificación LEED</span>
+        </div>
+        <div class="pcard-avail">
+          <span class="avail-dot"></span>8 unidades disponibles · Torre entregada
+        </div>
+        <div class="pcard-tip">"Quiero invertir en CDMX, presupuesto 5-7 millones, para rentar"</div>
+      </div>
+    </div>
+
+    <!-- TORRE NEXUS -->
+    <div class="pcard">
+      <div class="pcard-header" style="background:linear-gradient(135deg,#7A4A2E 0%,#4d2d1a 100%)">
+        <div class="pcard-tipo">Corporativo · Comercial</div>
+        <div class="pcard-name">Torre Nexus</div>
+        <div class="pcard-loc">📍 San Pedro, Monterrey, NL</div>
+        <div class="pcard-price">Preventa activa · Precio preferencial</div>
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-section-title">🏗️ Opciones</div>
+        <div class="pcard-items">
+          <div class="pcard-item">Oficinas desde 45 m²</div>
+          <div class="pcard-item">Plantas completas disponibles</div>
+          <div class="pcard-item">Locales comerciales PB</div>
+          <div class="pcard-item">25 pisos · Edificio mixto</div>
+        </div>
+        <div class="pcard-section-title">✨ Características</div>
+        <div class="pcard-amenities">
+          <span class="amenity">🏢 Lobby ejecutivo</span>
+          <span class="amenity">🅿️ Estacionamiento multinivel</span>
+          <span class="amenity">⚡ Planta de emergencia</span>
+          <span class="amenity">🌐 Fibra óptica</span>
+          <span class="amenity">🛗 Elevadores de alta velocidad</span>
+        </div>
+        <div class="pcard-section-title">💳 Esquemas</div>
+        <div class="pcard-amenities">
+          <span class="amenity">Compra directa</span>
+          <span class="amenity">Arrendamiento</span>
+          <span class="amenity">Preventa con enganche flexible</span>
+        </div>
+        <div class="pcard-avail">
+          <span class="avail-dot" style="background:#C0456A"></span>Preventa — entrega Q4 2026 · Precio aumenta en Fase 2
+        </div>
+        <div class="pcard-tip">"Necesito oficinas en Monterrey para 20 personas"</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EQUIPO -->
+  <div class="team-box">
+    <div class="team-box-title">👥 Equipo de agentes especializados</div>
+    <div class="team-row">
+      <div class="team-avatar" style="background:rgba(46,125,110,0.10);color:#2E7D6E;">S</div>
+      <div><div class="team-name">Sofía</div><div class="team-role">Recepcionista · Califica y enruta</div></div>
+      <div class="team-arrow">Recepcionista ✅</div>
+    </div>
+    <div class="team-row">
+      <div class="team-avatar" style="background:rgba(59,111,212,0.10);color:#3B6FD4;">R</div>
+      <div><div class="team-name">Rodrigo</div><div class="team-role">Especialista de proyectos · Presenta y asesora</div></div>
+      <div class="team-arrow">Especialista</div>
+    </div>
+    <div class="team-row">
+      <div class="team-avatar" style="background:rgba(192,69,106,0.10);color:#C0456A;">V</div>
+      <div><div class="team-name">Valeria</div><div class="team-role">Agendadora · Programa visitas y registra leads</div></div>
+      <div class="team-arrow">Cierre</div>
+    </div>
+  </div>
+
+  <!-- ESCENARIOS -->
+  <div class="scenarios-title">🎯 Escenarios disponibles</div>
+  <div class="scenarios">
+    <div class="scenario">
+      <div class="scenario-num">01</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Prospecto familiar — Jardines de Pedregal</div>
+        <div class="scenario-desc">Sofía califica, recomienda Jardines y transfiere a Rodrigo para detalles. Valeria agenda la visita.</div>
+        <div class="scenario-tip">"Hola, busco una casa para mi familia, tenemos presupuesto de unos 2 millones y queremos algo en Guadalajara"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">02</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Prospecto inversionista — Altavista</div>
+        <div class="scenario-desc">Sofía detecta intención de inversión, recomienda Altavista y pasa a Rodrigo quien presenta el esquema de retorno.</div>
+        <div class="scenario-tip">"Quiero invertir en un departamento en CDMX, presupuesto de 5 a 7 millones, para rentar"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">03</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Prospecto corporativo — Torre Nexus</div>
+        <div class="scenario-desc">Sofía identifica perfil empresarial y conecta con Rodrigo para presentar opciones de oficinas en Monterrey.</div>
+        <div class="scenario-tip">"Necesito oficinas para mi empresa en Monterrey, somos unas 20 personas"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">04</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Prueba de reglas duras</div>
+        <div class="scenario-desc">Intenta que Sofía revele precios sin dar los 4 datos. Demuestra que las reglas del agente son reales.</div>
+        <div class="scenario-tip">"¿Cuánto cuesta Jardines de Pedregal?" → sin dar propósito, presupuesto, ubicación ni timeline</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">05</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Handoff completo Sofía → Rodrigo → Valeria</div>
+        <div class="scenario-desc">El escenario más completo: calificación → asesoría del proyecto → agendamiento de visita. 3 agentes en una sola conversación.</div>
+        <div class="scenario-tip">Completa los 4 datos de calificación y deja que el flujo se desarrolle naturalmente hasta agendar la visita</div>
+      </div>
+    </div>
+  </div>
+
   <div class="tags">
     <span class="tag">Inmobiliaria</span>
+    <span class="tag">3 agentes especializados</span>
     <span class="tag">Orquestación multi-agente</span>
+    <span class="tag">Calificación de leads</span>
+    <span class="tag">Agendamiento de visitas</span>
     <span class="tag">CRM mock</span>
-    <span class="tag">Agendamiento</span>
   </div>
-  <div class="hint">
-    <div class="hint-dot" style="background:#7A4A2E"></div>
-    Sofía está activa — abre el chat con el botón en la esquina inferior derecha
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-eyebrow">¿Te gustó lo que viste?</div>
+    <div class="cta-title">Diseñamos tu agente<br>a la medida de tu operación</div>
+    <div class="cta-sub">Cuéntanos tu caso de uso y te proponemos una solución concreta.<br>Primera conversación sin costo.</div>
+    <div class="cta-buttons">
+      <a class="cta-btn primary" href="mailto:info@dixsis.com?subject=Quiero%20saber%20más%20sobre%20agentes%20IA&body=Hola%2C%20acabo%20de%20ver%20la%20demo%20de%20Sofía%20en%20demos.dixsis.com%20y%20me%20interesa%20saber%20más.">
+        ✉️ Escríbenos a info@dixsis.com
+      </a>
+      <a class="cta-btn secondary" href="https://www.linkedin.com/company/dixsis/" target="_blank">
+        💼 Síguenos en LinkedIn
+      </a>
+    </div>
   </div>
 </main>
-<footer>Demo por <a href="index.html">Dixsis</a> · powered by inConcert inAgent · <span style="opacity:0.5">Datos ficticios</span></footer>
+
+<footer>
+  Demo por <a href="index.html">Dixsis</a> · powered by inConcert inAgent · <span style="opacity:0.5">Datos ficticios</span>
+</footer>
+
 <script>
-(function(){var s=document.createElement("script");s.src="https://s3.us-east-1.amazonaws.com/webchat.us1.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/a75116a8-57d9-41ae-981c-6992c1f1c431/a75116a8-57d9-41ae-981c-6992c1f1c431.bundle.js";s.async=true;s.charset="UTF-8";s.onload=function(){window.Webchat.init()};document.head.appendChild(s)})();
+(function(){
+  var s=document.createElement("script");
+  s.src="https://s3.us-east-1.amazonaws.com/webchat.us1.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/a75116a8-57d9-41ae-981c-6992c1f1c431/a75116a8-57d9-41ae-981c-6992c1f1c431.bundle.js";
+  s.async=true;s.charset="UTF-8";
+  s.onload=function(){window.Webchat.init()};
+  document.head.appendChild(s);
+})();
 </script>
-</body></html>
+
+</body>
+</html>
