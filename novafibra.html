@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nova — Soporte Técnico · Dixsis Demos</title>
+<title>Nova Fibra Telco — Contact Center Virtual · Dixsis Demos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -16,22 +16,48 @@ nav{position:sticky;top:0;z-index:100;background:rgba(244,239,232,0.92);backdrop
 .back:hover{color:var(--brown)}
 .back svg{width:16px;height:16px}
 .nav-tag{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 28px;position:relative;z-index:1;text-align:center}
-.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 24px;background:var(--indigo-dim);color:var(--indigo);border:1px solid rgba(65,88,208,0.2)}
-h1{font-family:"Playfair Display",serif;font-size:44px;font-weight:700;color:var(--brown);margin-bottom:8px}
-.role{font-size:14px;color:var(--muted);margin-bottom:28px}
-.desc{max-width:480px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:36px}
-.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:40px}
-.tag{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid var(--border2);color:var(--muted);background:rgba(255,255,255,0.5)}
-.team{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
+main{flex:1;display:flex;flex-direction:column;align-items:center;padding:48px 28px 60px;position:relative;z-index:1;text-align:center}
+.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 20px;background:var(--indigo-dim);color:var(--indigo);border:1px solid rgba(65,88,208,0.2)}
+h1{font-family:"Playfair Display",serif;font-size:40px;font-weight:700;color:var(--brown);margin-bottom:6px}
+.role{font-size:14px;color:var(--muted);margin-bottom:16px}
+.desc{max-width:520px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:32px}
+
+/* DEMO BOX */
+.demo-box{width:100%;max-width:560px;background:#fff;border:1px solid var(--border2);border-radius:14px;padding:20px 24px;margin-bottom:28px;text-align:left}
+.demo-box-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:14px}
+.demo-name{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:var(--brown);margin-bottom:12px}
+.demo-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.demo-field{display:flex;flex-direction:column;gap:2px}
+.demo-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted)}
+.demo-val{font-size:13px;font-weight:500;color:var(--brown2)}
+.demo-note{font-size:12px;color:var(--muted);background:var(--cream);border-radius:8px;padding:10px 12px;line-height:1.5}
+.demo-note strong{color:var(--indigo)}
+
+/* ESCENARIOS */
+.scenarios-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px;width:100%;max-width:560px;text-align:left}
+.scenarios{width:100%;max-width:560px;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.scenario{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-align:left}
+.scenario-num{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:var(--indigo);opacity:0.3;line-height:1;flex-shrink:0;width:28px}
+.scenario-name{font-size:13px;font-weight:600;color:var(--brown);margin-bottom:4px}
+.scenario-desc{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.scenario-tip{font-size:12px;color:var(--brown2);background:var(--cream);border-radius:7px;padding:8px 10px;font-style:italic}
+
+/* TEAM */
+.team{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
 .team-member{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px 14px}
 .team-avatar{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:12px;font-weight:700}
 .team-info{text-align:left}
 .team-name{font-size:12px;font-weight:500;color:var(--brown)}
 .team-role{font-size:10px;color:var(--muted)}
-.hint{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--border);padding:14px 20px;border-radius:11px;max-width:420px;line-height:1.6}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:0}
+.tag{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid var(--border2);color:var(--muted);background:rgba(255,255,255,0.5)}
+
 footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;position:relative;z-index:1}
 footer a{color:var(--rust);text-decoration:none}
+
+@media(max-width:560px){.demo-fields{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -41,19 +67,70 @@ footer a{color:var(--rust);text-decoration:none}
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
     Volver a demos
   </a>
-  <span class="nav-tag">Telco · Soporte Técnico</span>
+  <span class="nav-tag">Telco · Chat + Voz · 4 Agentes</span>
 </nav>
 
 <main>
   <div class="avatar">N</div>
-  <h1>Nova</h1>
+  <h1>Nova Fibra Telco</h1>
   <p class="role">Contact Center Virtual · NovaFibra ISP</p>
   <p class="desc">
-    Reporta tu falla de conexión y Nova te identifica automáticamente, 
-    diagnostica el problema, reinicia tu equipo de forma remota y registra 
-    el caso. Si no resuelve, escala a un asesor con el contexto completo.
+    Contact center completamente virtual con 4 agentes especializados. Nova recibe y enruta, 
+    Axel resuelve fallas técnicas, Valeria atiende facturación y Max gestiona planes. 
+    Si no se resuelve, escalan a un asesor humano con contexto completo.
   </p>
 
+  <!-- DATOS DE PRUEBA -->
+  <div class="demo-box">
+    <div class="demo-box-title">👤 Cliente de prueba para esta demo</div>
+    <div class="demo-name">María García</div>
+    <div class="demo-fields">
+      <div class="demo-field"><span class="demo-label">Cuenta</span><span class="demo-val">NF-2024-08741</span></div>
+      <div class="demo-field"><span class="demo-label">Plan</span><span class="demo-val">NovaFibra 300 Mbps</span></div>
+      <div class="demo-field"><span class="demo-label">Tecnología</span><span class="demo-val">GPON</span></div>
+      <div class="demo-field"><span class="demo-label">Zona</span><span class="demo-val">Guayaquil Norte · Nodo GYE-047</span></div>
+    </div>
+    <div class="demo-note">Usa exactamente <strong>María García</strong> o el número de cuenta <strong>NF-2024-08741</strong> para que el sistema te identifique correctamente.</div>
+  </div>
+
+  <!-- ESCENARIOS -->
+  <div class="scenarios-title">🎯 Escenarios disponibles</div>
+  <div class="scenarios">
+    <div class="scenario">
+      <div class="scenario-num">01</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Falla de internet</div>
+        <div class="scenario-desc">Nova identifica al cliente, transfiere a Axel quien diagnostica la falla y puede reiniciar el equipo de forma remota.</div>
+        <div class="scenario-tip">"Hola, soy María García y no tengo internet desde esta mañana"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">02</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Consulta de factura</div>
+        <div class="scenario-desc">Nova enruta a Valeria (facturación) quien explica el detalle del cobro y responde dudas sobre cargos.</div>
+        <div class="scenario-tip">"Tengo una duda sobre mi última factura"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">03</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Plan de pago</div>
+        <div class="scenario-desc">Valeria gestiona la solicitud de acuerdo de pago y registra el compromiso en el sistema.</div>
+        <div class="scenario-tip">"Este mes no puedo pagar el total, ¿hay algún plan de pago?"</div>
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-num">04</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Cambio de plan</div>
+        <div class="scenario-desc">Max (planes) presenta las opciones disponibles y gestiona la solicitud de cambio.</div>
+        <div class="scenario-tip">"Quiero conocer mis opciones para cambiar de plan"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EQUIPO -->
   <div class="team">
     <div class="team-member">
       <div class="team-avatar" style="background:rgba(65,88,208,0.10);color:#4158D0;">N</div>
@@ -81,16 +158,13 @@ footer a{color:var(--rust);text-decoration:none}
     <span class="tag">Webchat + WebCall</span>
     <span class="tag">CRM mock</span>
   </div>
-
-  <div class="hint">
-    <strong>Tip para la demo:</strong> preséntate con tu nombre, reporta que no tienes internet y deja que Nova diagnostique y gestione tu caso. Disponible por chat de texto y por voz — recuerda mover uno de los botones flotantes al lado izquierdo en inAgent para que no se encimen.
-  </div>
 </main>
 
 <footer>
   Demo por <a href="index.html">Dixsis</a> · powered by inConcert inAgent · <span style="opacity:0.5">Datos ficticios</span>
 </footer>
 
+<!-- WEBCHAT -->
 <script>
 (function(){
   var s=document.createElement("script");
