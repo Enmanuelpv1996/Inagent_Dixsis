@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucía — Asesora de Cobranza · Dixsis Demos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cream:#F4EFE8;--cream2:#EDE7DE;--brown:#3B2A1E;--brown2:#5C4033;--rust:#7A4A2E;--muted:#8C7B6E;--border:rgba(59,42,30,0.10);--border2:rgba(59,42,30,0.18);--teal:#1A7F6E;--teal-dim:rgba(26,127,110,0.10)}
+body{background:var(--cream);color:var(--brown);font-family:"DM Sans",sans-serif;min-height:100vh;display:flex;flex-direction:column}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 30% 20%,rgba(26,127,110,0.07) 0%,transparent 60%);pointer-events:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(244,239,232,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.back{display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:13px}
+.back:hover{color:var(--brown)}
+.back svg{width:16px;height:16px}
+.nav-tag{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
+main{flex:1;display:flex;flex-direction:column;align-items:center;padding:48px 28px 60px;position:relative;z-index:1;text-align:center}
+.avatar{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:32px;font-weight:700;margin:0 auto 20px;background:var(--teal-dim);color:var(--teal);border:1px solid rgba(26,127,110,0.2)}
+h1{font-family:"Playfair Display",serif;font-size:40px;font-weight:700;color:var(--brown);margin-bottom:6px}
+.role{font-size:14px;color:var(--muted);margin-bottom:16px}
+.desc{max-width:520px;font-size:15px;color:var(--brown2);line-height:1.7;margin-bottom:32px}
+
+/* CLIENTE DEMO */
+.demo-box{width:100%;max-width:560px;background:#fff;border:1px solid var(--border2);border-radius:14px;padding:20px 24px;margin-bottom:10px;text-align:left}
+.demo-box-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:14px}
+.demo-name{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:var(--brown);margin-bottom:12px}
+.demo-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.demo-field{display:flex;flex-direction:column;gap:2px}
+.demo-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted)}
+.demo-val{font-size:13px;font-weight:500;color:var(--brown2)}
+.demo-note{font-size:12px;color:var(--muted);background:var(--cream);border-radius:8px;padding:10px 12px;line-height:1.5}
+.demo-note strong{color:var(--teal)}
+
+/* OTROS DEUDORES */
+.accounts-box{width:100%;max-width:560px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin-bottom:28px;text-align:left}
+.accounts-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px}
+.account-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)}
+.account-row:last-child{border-bottom:none}
+.account-num{font-size:12px;font-weight:600;color:var(--teal);font-family:monospace;flex-shrink:0;min-width:130px}
+.account-name{font-size:13px;color:var(--brown2);flex:1}
+.account-detail{font-size:11px;color:var(--muted);text-align:right}
+
+/* ESCENARIOS */
+.scenarios-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px;width:100%;max-width:560px;text-align:left}
+.scenarios{width:100%;max-width:560px;display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.scenario{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-align:left}
+.scenario-num{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:var(--teal);opacity:0.35;line-height:1;flex-shrink:0;width:28px}
+.scenario-name{font-size:13px;font-weight:600;color:var(--brown);margin-bottom:4px}
+.scenario-desc{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.scenario-tip{font-size:12px;color:var(--brown2);background:var(--cream);border-radius:7px;padding:8px 10px;font-style:italic}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:40px}
+.tag{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid var(--border2);color:var(--muted);background:rgba(255,255,255,0.5)}
+
+/* AVISO VOZ */
+.voice-notice{width:100%;max-width:560px;background:rgba(26,127,110,0.07);border:1px solid rgba(26,127,110,0.18);border-radius:12px;padding:14px 18px;margin-bottom:28px;text-align:left;display:flex;gap:12px;align-items:flex-start}
+.voice-notice-ico{font-size:20px;flex-shrink:0;margin-top:1px}
+.voice-notice-title{font-size:13px;font-weight:600;color:var(--teal);margin-bottom:3px}
+.voice-notice-body{font-size:12.5px;color:var(--brown2);line-height:1.55}
+
+/* CTA */
+.cta-section{width:100%;max-width:560px;background:var(--brown);border-radius:16px;padding:28px;text-align:center;margin-bottom:0}
+.cta-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.13em;color:rgba(244,239,232,0.5);margin-bottom:10px}
+.cta-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:#F4EFE8;margin-bottom:8px;line-height:1.2}
+.cta-sub{font-size:13px;color:rgba(244,239,232,0.65);margin-bottom:22px;line-height:1.6}
+.cta-buttons{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:opacity 0.15s,transform 0.15s;cursor:pointer;border:none}
+.cta-btn:hover{opacity:0.88;transform:translateY(-1px)}
+.cta-btn.primary{background:#F4EFE8;color:var(--brown)}
+.cta-btn.secondary{background:rgba(255,255,255,0.10);color:#F4EFE8;border:1px solid rgba(255,255,255,0.2)}
+
+footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;position:relative;z-index:1}
+footer a{color:var(--rust);text-decoration:none}
+@media(max-width:560px){.demo-fields{grid-template-columns:1fr}.account-detail{display:none}.cta-buttons{flex-direction:column}.cta-btn{justify-content:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+    Volver a demos
+  </a>
+  <span class="nav-tag">Cobranza · Voz + Chat · Function Calling</span>
+</nav>
+
+<main>
+  <div class="avatar">L</div>
+  <h1>Lucía</h1>
+  <p class="role">Asesora de Cobranza · inConcert</p>
+  <p class="desc">
+    Agente outbound de cobranza telefónica. Identifica al titular, gestiona la regularización 
+    de saldo vencido, negocia fechas de pago y genera cupones — todo con tono cálido y respuestas 
+    breves, como una asesora humana real.
+  </p>
+
+  <!-- AVISO DE VOZ -->
+  <div class="voice-notice">
+    <div class="voice-notice-ico">🎙️</div>
+    <div>
+      <div class="voice-notice-title">Demo disponible por voz y por chat</div>
+      <div class="voice-notice-body">Puedes interactuar con Lucía hablando (WebCall) o escribiendo (Webchat). 
+      El widget aparece en la esquina inferior de la pantalla. Para la experiencia de voz, asegúrate de tener 
+      micrófono disponible y permitir acceso al navegador.</div>
+    </div>
+  </div>
+
+  <!-- CLIENTE PRINCIPAL -->
+  <div class="demo-box">
+    <div class="demo-box-title">👤 Cliente principal para esta demo</div>
+    <div class="demo-name">Carlos Ramírez Soto</div>
+    <div class="demo-fields">
+      <div class="demo-field"><span class="demo-label">Cuenta</span><span class="demo-val">ACC-2024-00847</span></div>
+      <div class="demo-field"><span class="demo-label">Saldo vencido</span><span class="demo-val">$1,350 MXN</span></div>
+      <div class="demo-field"><span class="demo-label">CP</span><span class="demo-val">06600</span></div>
+      <div class="demo-field"><span class="demo-label">Correo</span><span class="demo-val">carlos.ramirez@demo.com</span></div>
+    </div>
+    <div class="demo-note">Lucía ya conoce el nombre del cliente. Responde como si fueras <strong>Carlos</strong> para recorrer el flujo completo de cobranza.</div>
+  </div>
+
+  <!-- ESCENARIOS -->
+  <div class="scenarios-title">🎯 Escenarios disponibles</div>
+  <div class="scenarios">
+
+    <div class="scenario">
+      <div class="scenario-num">01</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Identificación del titular</div>
+        <div class="scenario-desc">Lucía pregunta si habla con el titular antes de revelar cualquier dato. Confirma identidad o gestiona el caso si no es la persona correcta.</div>
+        <div class="scenario-tip">Responde "Sí, soy yo" para continuar · "No, se equivocó" para ver cómo cierra</div>
+      </div>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-num">02</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Promesa de pago + cupón</div>
+        <div class="scenario-desc">Lucía negocia la fecha, genera el cupón y lo envía al correo y WhatsApp registrados. Prueba con efectivo, transferencia o tarjeta.</div>
+        <div class="scenario-tip">"Sí, puedo pagar el viernes" → elige método → recibe cupón</div>
+      </div>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-num">03</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Ya pagué</div>
+        <div class="scenario-desc">Lucía registra el caso sin insistir ni pedir comprobante. Cierre empático y tipificación correcta.</div>
+        <div class="scenario-tip">"Ya pagué ayer, ya tengo el comprobante"</div>
+      </div>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-num">04</div>
+      <div class="scenario-body">
+        <div class="scenario-name">No puede pagar ahora — agenda</div>
+        <div class="scenario-desc">El cliente pide ser contactado después. Lucía calcula la fecha y agenda el seguimiento sin presionar.</div>
+        <div class="scenario-tip">"Ahorita no puedo, llámame la próxima semana"</div>
+      </div>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-num">05</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Detección de buzón de voz</div>
+        <div class="scenario-desc">Si la primera respuesta suena a grabación automática, Lucía tipifica como "Buzón de voz" y no continúa la conversación.</div>
+        <div class="scenario-tip">"Deje su mensaje después del tono"</div>
+      </div>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-num">06</div>
+      <div class="scenario-body">
+        <div class="scenario-name">Rechazo o negativa</div>
+        <div class="scenario-desc">Prueba los guardrails: insiste en no pagar, pide cancelar o responde con molestia. Lucía mantiene el tono y tipifica correctamente.</div>
+        <div class="scenario-tip">"No voy a pagar" · "Quiero cancelar el servicio" · "Ya no me llamen"</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tags">
+    <span class="tag">Cobranza</span>
+    <span class="tag">Outbound · Voz</span>
+    <span class="tag">Webchat</span>
+    <span class="tag">Function calling</span>
+    <span class="tag">Promesa de pago</span>
+    <span class="tag">Generación de cupón</span>
+    <span class="tag">Tipificación automática</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-eyebrow">¿Te gustó lo que viste?</div>
+    <div class="cta-title">Diseñamos tu agente<br>a la medida de tu operación</div>
+    <div class="cta-sub">Cuéntanos tu caso de uso y te proponemos una solución concreta.<br>Primera conversación sin costo.</div>
+    <div class="cta-buttons">
+      <a class="cta-btn primary" href="mailto:info@dixsis.com?subject=Quiero%20saber%20más%20sobre%20agentes%20IA&body=Hola%2C%20acabo%20de%20ver%20la%20demo%20de%20Luc%C3%ADa%20en%20demos.dixsis.com%20y%20me%20interesa%20saber%20más.">
+        ✉️ Escríbenos a info@dixsis.com
+      </a>
+      <a class="cta-btn secondary" href="https://www.linkedin.com/company/dixsis/" target="_blank">
+        💼 Síguenos en LinkedIn
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  Demo por <a href="index.html">Dixsis</a> · powered by inConcert inAgent · <span style="opacity:0.5">Datos ficticios</span>
+</footer>
+
+<!-- WEBCHAT -->
+<script>
+(function(){
+  var s=document.createElement("script");
+  s.src="https://s3.us-east-1.amazonaws.com/webchat.us1.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/a2e199d9-3fb8-4a6a-ad58-a28b865ba33d/a2e199d9-3fb8-4a6a-ad58-a28b865ba33d.bundle.js";
+  s.async=true;s.charset="UTF-8";
+  s.onload=function(){window.Webchat.init()};
+  document.head.appendChild(s);
+})();
+</script>
+
+<!-- WEBCALL -->
+<script>
+(function(){
+  var s=document.createElement("script");
+  s.src="https://s3.us-east-1.amazonaws.com/livekit.us1.webcall.bundles/channel-bundles/dc24e94a-8b77-4947-bf45-ea1d9beeaec5/222f075c-dec5-438d-8ec1-30e8841c81e7/222f075c-dec5-438d-8ec1-30e8841c81e7.bundle.js";
+  s.charset="UTF-8";
+  s.onload=function(){window.Webcall.init()};
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
